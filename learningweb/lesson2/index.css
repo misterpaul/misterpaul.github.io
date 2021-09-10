@@ -1,12 +1,10 @@
-.outer-box {
-    background-color: black;
-    border-color: blueviolet;
-    margin: 10px;
-}
 
-.inner-box {
+.box {
     background-color: yellow;
-    border-width: 20px;
-    border-color: aqua;
-
+    padding: 5px;
+}
+.code {
+    background-color: gray;
+    color: rgb(255, 123, 0);
+    font-family: monospace;
 }
