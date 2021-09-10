@@ -1,0 +1,12 @@
+.outer-box {
+    background-color: black;
+    border-color: blueviolet;
+    margin: 10px;
+}
+
+.inner-box {
+    background-color: green;
+    border-width: 20px;
+    border-color: aqua;
+
+}
