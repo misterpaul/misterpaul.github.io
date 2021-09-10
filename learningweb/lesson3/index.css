@@ -1,12 +1,20 @@
 .outer-box {
     background-color: black;
-    border-color: blueviolet;
     margin: 10px;
+    padding: 20px;
 }
 
 .inner-box {
     background-color: yellow;
     border-width: 20px;
     border-color: aqua;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 
+.water-bottle {
+    background-color: gray;
+    padding: 5px;
 }
