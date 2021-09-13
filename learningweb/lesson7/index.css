@@ -50,6 +50,8 @@ li, p {
 
 .ol-1 {
     style-type: decimal;
+    line-height: 2;
+
 }
 
 .ol-2 {
