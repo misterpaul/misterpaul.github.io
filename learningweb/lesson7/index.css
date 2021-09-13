@@ -1,3 +1,7 @@
+li, p {
+    line-height: 1.5;
+  }
+
 .outer-box {
     background-color: black;
     margin: 10px;
@@ -42,4 +46,32 @@
     padding: 0px;
     width: 90px;
     height: 90px; 
+}
+
+.ol-1 {
+    style-type: decimal;
+}
+
+.ol-2 {
+    style-type: upper-alpha;
+}
+
+.ol-3 {
+    style-type: lower-roman;
+}
+
+.ol-4 {
+    style-type: lower-alpha;
+}
+
+.ul-1 {
+    style-type: circle;
+}
+
+.ul-2 {
+    style-type: square;
+}
+
+.ul-3 {
+    style-type: disc;
 }
