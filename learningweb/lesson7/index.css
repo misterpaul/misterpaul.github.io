@@ -1,0 +1,45 @@
+.outer-box {
+    background-color: black;
+    margin: 10px;
+    padding: 20px;
+}
+
+.inner-box {
+    background-color: yellow;
+    border-width: 20px;
+    border-color: aqua;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.lesson {
+    background-color: lightskyblue;
+    margin: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.code {
+    background-color: lightgray;
+    color: maroon;
+    font-family: monospace;
+    font-size: larger;
+}
+
+.water-bottle {
+    background-color: gray;
+    padding: 5px;
+    width: 180px;
+    height: 180px; 
+}
+
+.plusminus {
+    background-color: gray;
+    padding: 0px;
+    width: 90px;
+    height: 90px; 
+}
