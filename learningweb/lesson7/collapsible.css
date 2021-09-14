@@ -18,7 +18,7 @@
   }
   
   /* Style the collapsible content. Note: hidden by default */
-  .collapsible {
+  .content {
     padding: 0 18px;
     display: none;
     overflow: hidden;
