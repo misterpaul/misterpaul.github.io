@@ -13,8 +13,11 @@
   }
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .collapsible-header:hover {
+  .collapsible-active {
     background-color: #ccc;
+  }  
+  .collapsible-header:hover {
+    background-color: #ddd;
   }
   
   /* Style the collapsible content. Note: hidden by default */
