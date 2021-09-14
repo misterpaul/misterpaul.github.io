@@ -1,6 +1,6 @@
 /* From https://www.w3schools.com/howto/howto_js_collapsible.asp */
 
-var coll = document.getElementsByClassName("collapsible");
+var coll = document.getElementsByClassName("collapsible-header");
 var i;
 
 for (i = 0; i < coll.length; i++) {
