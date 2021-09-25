@@ -12,22 +12,5 @@ for (i = 0; i < coll.length; i++) {
     } else {
       content.style.display = "block";
     }
-
-    /***
-    // close everything else
-    for (j = 0; j < coll.length; j++) {
-      if (col[j] != this) {
-        coll[j].toggle("collabsible-header");
-
-        var other_content = col[j].nextElementSibling;
-        if (other_content.style.display === "block") {
-          other_content.style.display = "none";
-        } else {
-          other_content.style.display = "block";
-        }
-      }
-    }
-    ***/
   });
-
 }
