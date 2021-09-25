@@ -13,6 +13,7 @@ for (i = 0; i < coll.length; i++) {
       content.style.display = "block";
     }
 
+    /***
     // close everything else
     for (j = 0; j < coll.length; j++) {
       if (col[j] != this) {
@@ -26,7 +27,7 @@ for (i = 0; i < coll.length; i++) {
         }
       }
     }
-
+    ***/
   });
 
 }
