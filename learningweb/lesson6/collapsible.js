@@ -13,4 +13,20 @@ for (i = 0; i < coll.length; i++) {
       content.style.display = "block";
     }
   });
+
+  // close everything else
+  for (j = 0; j < coll.length; j++) {
+    if (j != i) {
+      coll[j].toggle("collabsible-header");
+
+      var content = col[j].nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    }
+  }
+
+
 }
