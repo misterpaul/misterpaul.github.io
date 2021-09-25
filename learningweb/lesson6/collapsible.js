@@ -15,14 +15,14 @@ for (i = 0; i < coll.length; i++) {
 
     // close everything else
     for (j = 0; j < coll.length; j++) {
-      if (j != i) {
+      if (col[j] != this) {
         coll[j].toggle("collabsible-header");
 
-        var content = col[j].nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
+        var other_content = col[j].nextElementSibling;
+        if (other_content.style.display === "block") {
+          other_content.style.display = "none";
         } else {
-          content.style.display = "block";
+          other_content.style.display = "block";
         }
       }
     }
