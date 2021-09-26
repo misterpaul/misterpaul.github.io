@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scaling!</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<script>
+    let scaleDownFactor = .75
+    let scaleUpFactor = 1.5
+    function scale (string, number) {
+        // takes a string that consists of a number + units, and multiplies it by a number
+        let array=string.match(/(-?[\d.]+)([a-z%]*)/)
+        return result=array[1] * number + array[2]
+    }
+
+    function scaleDown() {
+        document.getElementById("water-bottle").style.width =  scale(document.getElementById("water-bottle").style.width, scaleDownFactor)
+        document.getElementById("water-bottle").style.height = scale(document.getElementById("water-bottle").style.height, scaleDownFactor)
+    }
+    
+    function scaleUp() {
+        document.getElementById("water-bottle").style.width = scale(document.getElementById("water-bottle").style.width, scaleUpFactor)
+        document.getElementById("water-bottle").style.height =  scale(document.getElementById("water-bottle").style.height, scaleUpFactor)
+    }
+</script>
+<body>  
+    <b>Scaling!</b>
+    <div class="outer-box">
+        <img src="../images/water-bottle-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
+        <img src="../images/minus-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Scale Down" title="Scale Down" class="plusminus" onclick="scaleDown();">
+        <img src="../images/plus-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Scale Up" title="Scale Up" class="plusminus" onclick="scaleUp();">
+        <div class="inner-box">
+            Here is a water bottle. Use (+) and (-) to make it bigger or smaller.
+        </div>
+        <div class="lesson">
+            We're dipping our toes into Javascript now!  
+            <ol>
+                <li></li>
+            </ol> 
+            <b>Activities</b>
+            <ol>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
