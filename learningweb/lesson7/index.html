@@ -10,7 +10,7 @@
     function scale (string, number) {
         // takes a string that consists of a number + units, and multiplies it by a number
         let array=string.match(/(-?[\d.]+)([a-z%]*)/)
-        return result=array[1] * number + array[2]
+        return array[1] * number + array[2]
     }
 
     function scaleDown() {
