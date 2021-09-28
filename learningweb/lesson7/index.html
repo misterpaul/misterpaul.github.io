@@ -8,8 +8,8 @@
     let scaleDownFactor = .75
     let scaleUpFactor = 1.5
     function scale (string, number) {
-        print(number)
-        print(string)
+        console.log(number)
+        console.log(string)
         // takes a string that consists of a number + units, and multiplies it by a number
         let array=string.match(/(-?[\d.]+)([a-z%]*)/)
         return array[1] * number + array[2]
