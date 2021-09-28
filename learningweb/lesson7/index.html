@@ -18,13 +18,13 @@
     function scaleDown() {
         console.log(document.getElementById("water-bottle").getAttribute("width"))
         console.log(getComputedStyle(document.getElementById("water-bottle")).width)
-        document.getElementById("water-bottle").style.width =  scale(console.log(document.getElementById("water-bottle").getAttribute("width")), scaleDownFactor)
-        document.getElementById("water-bottle").style.height = scale(console.log(document.getElementById("water-bottle").getAttribute("height")), scaleDownFactor)
+        document.getElementById("water-bottle").style.width =  scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleDownFactor)
+        document.getElementById("water-bottle").style.height = scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleDownFactor)
     }
     
     function scaleUp() {
-        document.getElementById("water-bottle").style.width = scale(document.getElementById("water-bottle").style.width, scaleUpFactor)
-        document.getElementById("water-bottle").style.height =  scale(document.getElementById("water-bottle").style.height, scaleUpFactor)
+        document.getElementById("water-bottle").style.width = scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleUpFactor)
+        document.getElementById("water-bottle").style.height =  scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleUpFactor)
     }
 </script>
 <body>  
