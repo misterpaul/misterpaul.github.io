@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scaling!</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<script>
+    let scaleDownFactor = .75
+    let scaleUpFactor = 1.5
+    let bottleMass = "23g" // REF 1
+    let conversionTable = {
+        // to keep it simple, put bigItem:littleItem so the values are > 1
+        "kg:g": 10E3,
+        "t:g": 907185, // tons:grams
+        "bottle:g": 23,
+    }
+ 
+
+    function convert (num_plus_unit, new_unit) {
+        // takes a string that consists of a number + units, and converts it to the new unit
+        let array=num_plus_unit.match(/(-?[\d.]+)([a-z%]*)/)
+        let num=array[1]
+        let unit=array[2]
+        let conversion = unit + ":" + new_unit
+        let inverse = new_unit + ":" + unit
+        let newValue = NaN   // default if conversion not in table
+        
+        if ( conversionTable.hasOwnProperty(conversion) ) {
+            let ratio = conversionTable[conversion]
+            newValue = scale( num + new_unit, ratio)
+        } else if (conversionTable.hasOwnProperty(inverse)) {
+            ratio = 1/conversionTable[inverse]
+            newValue = scale( num + new_unit, ratio)
+        }
+
+        return newValue
+    }
+
+    function scale (num_plus_unit, scaling_factor) {
+        // takes a string that consists of a number + units, and multiplies it by a scaling_factor
+        let array=num_plus_unit.match(/(-?[\d.]+)([a-z%]*)/)
+        return array[1] * scaling_factor + array[2]
+    }
+
+    function scaleDown() {
+        document.getElementById("water-bottle").style.width =  scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleDownFactor)
+        document.getElementById("water-bottle").style.height = scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleDownFactor)
+    }
+    
+    function scaleUp() {
+        document.getElementById("water-bottle").style.width = scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleUpFactor)
+        document.getElementById("water-bottle").style.height =  scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleUpFactor)
+    }
+</script>
+<body>  
+    <b>Scaling!</b>
+    <div class="outer-box">
+        
+        <img src="../images/minus-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Scale Down" title="Scale Down" class="plusminus" onclick="scaleDown();">
+        <img src="../images/plus-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Scale Up" title="Scale Up" class="plusminus" onclick="scaleUp();">
+        <div class="inner-box">
+            <div class="bottles_in_a_ton">
+                <table>
+                    <tr>
+                        <td>
+                        <img src="../images/water-bottle-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
+                        This is a 1-liter water bottle. It contains about 23 grams of plastic.
+                        </td>
+                        <td>
+                        <img src="../images/dumpster-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Dumpster SVG" title="Dumpster SVG" class="dumpster" id="dumpster"><br>
+                        This is a dumpster. Lets fill it with a ton of plastic. That's <em>39,443</em> 1-liter water bottles.... <button type="button" class="learn">Fill It!</button>
+                        </td>
+                    </tr>
+                </table>
+                
+
+            </div>
+        </div>
+        <div class="lesson">
+            Learn about plastic  
+            <ol>
+                <li>Most discussions of plastic talk about tons of plastic. How many plastic bottles are in a ton of plastic? <button type="button" class="learn">Find Out!</button></li>
+            </ol> 
+        </div>
+    </div>
+</body>
+</html>
