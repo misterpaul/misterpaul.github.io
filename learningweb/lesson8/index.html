@@ -64,10 +64,12 @@
         let maxStomps = 5
         let pause = 1000 //milliseconds
         let bottleDelta = getComputedStyle(document.getElementById("water-bottle")).height / maxStomps
+        console.log("bottleDelta: ", bottleDelta)
         let bootTop = document.getElementById("water-bottle").offsetTop
         for (let stomp = 0; stomp < maxStomps; stomp++) {
+            console.log("stomp #: ", stomp)
             for (let dropfoot = 0; dropfoot < bottleDelta; dropfoot++) {
-                console.log(dropfoot)
+                console.log("Dropfoot #: ", dropfoot)
                 document.getElementById('boot').style.top= bootTop + dropfoot + "px";
                 document.getElementById('water-bottle').style.height=document.getElementById('water-bottle').style.height - 1;
                 document.getElementById('water-bottle').style.width=document.getElementById('water-bottle').style.width - 1;
