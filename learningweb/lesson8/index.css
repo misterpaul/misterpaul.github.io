@@ -23,23 +23,14 @@
     padding-bottom: 2px;
 }
 
-.code {
-    background-color: lightgray;
-    color: maroon;
-    font-family: monospace;
-    font-size: larger;
-}
-
 .water-bottle {
-    background-color: gray;
     padding: 5px;
     width: 180px;
     height: 180px; 
 }
 
-.plusminus {
-    background-color: gray;
-    padding: 0px;
-    width: 90px;
-    height: 90px; 
+.dumpster {
+    padding: 5px;
+    width: 1024;
+    height: 512; 
 }
