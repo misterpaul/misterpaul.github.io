@@ -36,6 +36,8 @@
 }
 
 .boot {
+    position:absolute; 
+    top: 0;
     padding: 0px;
     width: 45;
     height: 45; 
