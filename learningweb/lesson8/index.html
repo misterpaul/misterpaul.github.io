@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Scaling!</title>
-  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="dropfoot.css">
 </head>
 <script>
     let scaleDownFactor = .75
@@ -51,8 +51,24 @@
         document.getElementById("water-bottle").style.width = scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleUpFactor)
         document.getElementById("water-bottle").style.height =  scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleUpFactor)
     }
+
+    function crushItFirst () {
+        alert("Uhhh... We probably should crush it first...")
+        let maxStomps = 5
+        let bottleDelta = getComputedStyle(document.getElementById("water-bottle")).height / maxStomps
+        for (let stomp = 0; stomp < maxStomps; stomp++) {
+            for (let dropfoot = 0; dropfoot < bottleDelta; dropfoot++) {
+                console.log(dropfoot)
+                
+                
+            }            
+        }
+    }
+
+    
+
 </script>
-<body>  
+<body> 
     <b>Scaling!</b>
     <div class="outer-box">
         <div class="inner-box">
@@ -60,12 +76,14 @@
                 <table>
                     <tr>
                         <td  align="bottom">
-                        <img src="../images/water-bottle-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
-                        This is a 1-liter water bottle. It contains about 23 grams of plastic.
+                            <img src="../images/boot-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Boot SVG" title="Boot SVG" class="boot" id="boot"><br>
+                            <img src="../images/water-bottle-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
+                            This is a 1-liter water bottle. It contains about 23 grams of plastic.
                         </td>
                         <td  align="bottom">
-                        <img src="../images/dumpster-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Dumpster SVG" title="Dumpster SVG" class="dumpster" id="dumpster"><br>
-                        This is a dumpster. Lets fill it with a ton of plastic. That's <em>39,443</em> 1-liter water bottles.... <button type="button" class="learn">Fill It!</button>
+                            <img src="../images/dumpster-svgrepo-com.svg" intrinsicsize="512 x 512" alt="Dumpster SVG" title="Dumpster SVG" class="dumpster" id="dumpster"><br>
+                            This is a dumpster. Lets fill it with a ton of plastic. That's <em>39,443</em> 1-liter water bottles.... 
+                            <button type="button" class="learn" id="fill_it" onclick="crushItFirst">Fill It!</button>
                         </td>
                     </tr>
                 </table>
