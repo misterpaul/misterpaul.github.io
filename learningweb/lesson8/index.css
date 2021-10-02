@@ -24,7 +24,7 @@
 }
 
 .water-bottle {
-    padding: 5px;
+    padding: 0px;
     width: 180px;
     height: 180px; 
 }
@@ -36,7 +36,7 @@
 }
 
 .boot {
-    padding: 5px;
+    padding: 0px;
     width: 45;
     height: 45; 
 }
