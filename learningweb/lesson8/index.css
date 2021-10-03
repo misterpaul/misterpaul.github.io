@@ -31,14 +31,14 @@
 
 .dumpster {
     padding: 5px;
-    width: 1024;
-    height: 512; 
+    width: 1024px;
+    height: 512px; 
 }
 
 .boot {
     position:absolute; 
     top: 0;
     padding: 0px;
-    width: 45;
-    height: 45; 
+    width: 45px;
+    height: 45px; 
 }
