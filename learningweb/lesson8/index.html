@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <script>
-    let version = 29
+    let version = 30
     let scaleDownFactor = .75
     let scaleUpFactor = 1.5
     let bottleMass = "23g" // REF 1
@@ -67,8 +67,8 @@
 
     function moveBoot(boot, bottle, delta) {
         boot.style.top= parseInt(boot.offsetTop + delta) + "px";
-        bottle.style.height=parseInt(bottle.height - 1) + "px"
-        bottle.style.width=parseInt(bottle.width - 1) + "px";
+        bottle.style.height=parseInt(bottle.height - delta) + "px"  
+        bottle.style.width=parseInt(bottle.width - delta) + "px";
     }
 
     function stomp(boot, bottle, stompRate, distance, stepSize) {
@@ -86,7 +86,7 @@
         let pause       = 1000 // milliseconds - how long to wait between stomps
         let boot        = document.getElementById('boot')
         let bottle      = document.getElementById('water-bottle')
-        let eachStomp   = bottle.offsetTop / maxStomps
+        let eachStomp   = (bottle.offsetHeight / maxStomps
 
         alert("Uhhh... We probably should crush it first...")
 
