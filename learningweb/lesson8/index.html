@@ -70,11 +70,9 @@
         bottle.style.width=parseInt(bottle.width - 1) + "px";
     }
 
-    function stomp(boot, bottle, stompRate, eachMove) {
-        let bottleDelta = bottle.height  / eachMove
-        let bootTop     = bottle.offsetTop
-        console.log("bottleDelta: ", bottleDelta)
-        for (let dropfoot = 0; dropfoot < bottleDelta; dropfoot++) {
+    function stomp(boot, bottle, stompRate, distance, eachMove) {
+        for (let dropfoot = 0; dropfoot < distance; dropfoot++) {
+            initBoot()
             setTimeout(moveBoot(boot, bottle), stompRate, eachMove)
         }            
 
@@ -87,12 +85,14 @@
         let pause       = 1000 // milliseconds - how long to wait between stomps
         let boot        = document.getElementById('boot')
         let bottle      = document.getElementById('water-bottle')
+        let eachStomp   = bottle.offsetTop / maxStomps
 
         alert("Uhhh... We probably should crush it first...")
 
-        for (let s = 0; s < maxStomps; s++) {
+        for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
             console.log("stomp #: ", s)
-            setTimeout(stomp(boot, bottle, stompRate, eachMove), pause)
+            stompDistance = s*eachStomp
+            setTimeout(stomp(boot, bottle, stompRate, stompDistance, eachMove), pause)
         }
     }
 
