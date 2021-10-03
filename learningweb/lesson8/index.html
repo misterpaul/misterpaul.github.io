@@ -4,103 +4,6 @@
   <title>Scaling!</title>
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-<script>
-    let version = 33
-    let scaleDownFactor = .75
-    let scaleUpFactor = 1.5
-    let bottleMass = "23g" // REF 1
-    let conversionTable = {
-        // to keep it simple, put bigItem:littleItem so the values are > 1
-        "kg:g": 10E3,
-        "t:g": 907185, // tons:grams
-        "bottle:g": 23,
-    }
-    let initialBootTop =  document.getElementById('boot').style.offsetTop
-
-    function sleep(milliseconds) {
-        const date = Date.now();
-        let currentDate = null;
-        do {
-            currentDate = Date.now();
-        } while (currentDate - date < milliseconds);
-    }
-
-    function convert (num_plus_unit, new_unit) {
-        // takes a string that consists of a number + units, and converts it to the new unit
-        let array=num_plus_unit.match(/(-?[\d.]+)([a-z%]*)/)
-        let num=array[1]
-        let unit=array[2]
-        let conversion = unit + ":" + new_unit
-        let inverse = new_unit + ":" + unit
-        let newValue = NaN   // default if conversion not in table
-        
-        if ( conversionTable.hasOwnProperty(conversion) ) {
-            let ratio = conversionTable[conversion]
-            newValue = scale( num + new_unit, ratio)
-        } else if (conversionTable.hasOwnProperty(inverse)) {
-            ratio = 1/conversionTable[inverse]
-            newValue = scale( num + new_unit, ratio)
-        }
-
-        return newValue
-    }
-
-    function scale (num_plus_unit, scaling_factor) {
-        // takes a string that consists of a number + units, and multiplies it by a scaling_factor
-        let array=num_plus_unit.match(/(-?[\d.]+)([a-z%]*)/)
-        return array[1] * scaling_factor + array[2]
-    }
-
-    function scaleDown() {
-        document.getElementById("water-bottle").style.width =  scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleDownFactor)
-        document.getElementById("water-bottle").style.height = scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleDownFactor)
-    }
-    
-    function scaleUp() {
-        document.getElementById("water-bottle").style.width = scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleUpFactor)
-        document.getElementById("water-bottle").style.height =  scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleUpFactor)
-    }
-
-    function initBoot(boot) {
-        boot.offsetTop = initialBootTop
-        boot.style.visibility='visible'
-    }
-
-    function moveBoot(boot, bottle, delta) {
-        boot.style.top= parseInt(delta) + "px";
-        bottle.style.height=parseInt(bottle.height - delta) + "px"  
-        bottle.style.width=parseInt(bottle.width - delta) + "px";
-    }
-
-    function stomp(boot, bottle, stompRate, distance, stepSize) {
-        initBoot(boot)
-        for (let dropfoot = 0; dropfoot < distance/stepSize; dropfoot++) {
-            setTimeout(moveBoot(boot, bottle, stepSize), stompRate)
-        }            
-
-    }
-
-    function crushIt () {
-        let maxStomps   = 5
-        let stepSize    = 10    // px  - how far to move in each iteration
-        let stompRate   = 2000  // milliseconds - how long to wait between movements within each stomp
-        let pause       = 1000 // milliseconds - how long to wait between stomps
-        let boot        = document.getElementById('boot')
-        let bottle      = document.getElementById('water-bottle')
-        let eachStomp   = (bottle.offsetHeight / maxStomps)
-
-        alert("Uhhh... We probably should crush it first...")
-
-        for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
-            console.log("stomp #: ", s)
-            stompDistance = s*eachStomp
-            setTimeout(stomp(boot, bottle, stompRate, stompDistance, stepSize), pause)
-        }
-    }
-
-    
-
-</script>
 <body> 
     <b>Scaling!</b>
     <div class="outer-box">
@@ -131,5 +34,103 @@
             </ol> 
         </div>
     </div>
+    <script>
+        let version = 34
+        let scaleDownFactor = .75
+        let scaleUpFactor = 1.5
+        let bottleMass = "23g" // REF 1
+        let conversionTable = {
+            // to keep it simple, put bigItem:littleItem so the values are > 1
+            "kg:g": 10E3,
+            "t:g": 907185, // tons:grams
+            "bottle:g": 23,
+        }
+        let initialBootTop =  document.getElementById('boot').style.offsetTop
+        let initialBootTop = getComputedStyle(document.getElementById('boot')).offsetTop
+    
+        function sleep(milliseconds) {
+            const date = Date.now();
+            let currentDate = null;
+            do {
+                currentDate = Date.now();
+            } while (currentDate - date < milliseconds);
+        }
+    
+        function convert (num_plus_unit, new_unit) {
+            // takes a string that consists of a number + units, and converts it to the new unit
+            let array=num_plus_unit.match(/(-?[\d.]+)([a-z%]*)/)
+            let num=array[1]
+            let unit=array[2]
+            let conversion = unit + ":" + new_unit
+            let inverse = new_unit + ":" + unit
+            let newValue = NaN   // default if conversion not in table
+            
+            if ( conversionTable.hasOwnProperty(conversion) ) {
+                let ratio = conversionTable[conversion]
+                newValue = scale( num + new_unit, ratio)
+            } else if (conversionTable.hasOwnProperty(inverse)) {
+                ratio = 1/conversionTable[inverse]
+                newValue = scale( num + new_unit, ratio)
+            }
+    
+            return newValue
+        }
+    
+        function scale (num_plus_unit, scaling_factor) {
+            // takes a string that consists of a number + units, and multiplies it by a scaling_factor
+            let array=num_plus_unit.match(/(-?[\d.]+)([a-z%]*)/)
+            return array[1] * scaling_factor + array[2]
+        }
+    
+        function scaleDown() {
+            document.getElementById("water-bottle").style.width =  scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleDownFactor)
+            document.getElementById("water-bottle").style.height = scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleDownFactor)
+        }
+        
+        function scaleUp() {
+            document.getElementById("water-bottle").style.width = scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleUpFactor)
+            document.getElementById("water-bottle").style.height =  scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleUpFactor)
+        }
+    
+        function initBoot(boot) {
+            boot.offsetTop = initialBootTop
+            boot.style.visibility='visible'
+        }
+    
+        function moveBoot(boot, bottle, delta) {
+            boot.style.top= parseInt(delta) + "px";
+            bottle.style.height=parseInt(bottle.height - delta) + "px"  
+            bottle.style.width=parseInt(bottle.width - delta) + "px";
+        }
+    
+        function stomp(boot, bottle, stompRate, distance, stepSize) {
+            initBoot(boot)
+            for (let dropfoot = 0; dropfoot < distance/stepSize; dropfoot++) {
+                setTimeout(moveBoot(boot, bottle, stepSize), stompRate)
+            }            
+    
+        }
+    
+        function crushIt () {
+            let maxStomps   = 5
+            let stepSize    = 10    // px  - how far to move in each iteration
+            let stompRate   = 2000  // milliseconds - how long to wait between movements within each stomp
+            let pause       = 1000 // milliseconds - how long to wait between stomps
+            let boot        = document.getElementById('boot')
+            let bottle      = document.getElementById('water-bottle')
+            let eachStomp   = (bottle.offsetHeight / maxStomps)
+    
+            alert("Uhhh... We probably should crush it first...")
+    
+            for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
+                console.log("stomp #: ", s)
+                stompDistance = s*eachStomp
+                setTimeout(stomp(boot, bottle, stompRate, stompDistance, stepSize), pause)
+            }
+        }
+    
+        
+    
+    </script>    
 </body>
 </html>
