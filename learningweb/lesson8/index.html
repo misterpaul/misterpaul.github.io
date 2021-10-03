@@ -59,22 +59,35 @@
         document.getElementById("water-bottle").style.height =  scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleUpFactor)
     }
 
+    function moveBoot(boot, bottle, delta) {
+        boot.style.top= parsInt(boot.offsetTop + delta) + "px";
+        bottle.style.height=parseInt(bottle.height - 1) + "px"
+        bottle.style.width=parseInt(bottle.width - 1) + "px";
+    }
+
+    function stomp(boot, bottle, stompRate, eachMove, bottleDelta) {
+        for (let dropfoot = 0; dropfoot < bottleDelta; dropfoot++) {
+            setTimeout(moveBoot(boot, bottle), stompRate, eachMove)
+        }            
+
+    }
+
     function crushIt () {
+        let maxStomps   = 5
+        let eachMove    = 1    // px  - how far to move in each iteration
+        let stompRate   = 100  // milliseconds - how long to wait between movements within each stomp
+        let pause       = 1000 // milliseconds - how long to wait between stomps
+        let boot        = document.getElementById('boot')
+        let bottle      = document.getElementById('water-bottle')
+        let bottleDelta = bottle.height / maxStomps / eachMove
+        let bootTop     = bottle.offsetTop
+
         alert("Uhhh... We probably should crush it first...")
-        let maxStomps = 5
-        let pause = 1000 //milliseconds
-        let bottleDelta = document.getElementById("water-bottle").height / maxStomps
+
         console.log("bottleDelta: ", bottleDelta)
-        let bootTop = document.getElementById("water-bottle").offsetTop
-        for (let stomp = 0; stomp < maxStomps; stomp++) {
-            console.log("stomp #: ", stomp)
-            for (let dropfoot = 0; dropfoot < bottleDelta; dropfoot++) {
-                console.log("Dropfoot #: ", dropfoot)
-                document.getElementById('boot').style.top= bootTop + dropfoot + "px";
-                document.getElementById('water-bottle').style.height=parseInt(document.getElementById('water-bottle').height - 1) + "px"
-                document.getElementById('water-bottle').style.width=parseInt(document.getElementById('water-bottle').width - 1) + "px";
-            }            
-            sleep (pause)
+        for (let s = 0; s < maxStomps; s++) {
+            console.log("stomp #: ", s)
+            setTimeout(stomp(boot, bottle, stompRate, eachMove, bottleDelta), pause)
         }
     }
 
