@@ -71,7 +71,7 @@
     }
 
     function stomp(boot, bottle, stompRate, eachMove) {
-        let bottleDelta = bottle.height / maxStomps / eachMove
+        let bottleDelta = bottle.height  / eachMove
         let bootTop     = bottle.offsetTop
         console.log("bottleDelta: ", bottleDelta)
         for (let dropfoot = 0; dropfoot < bottleDelta; dropfoot++) {
