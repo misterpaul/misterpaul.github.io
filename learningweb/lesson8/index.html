@@ -70,7 +70,7 @@
         bottle.style.width=parseInt(bottle.width - 1) + "px";
     }
 
-    function stomp(boot, bottle, stompRate, eachMove, bottleDelta) {
+    function stomp(boot, bottle, stompRate, eachMove) {
         let bottleDelta = bottle.height / maxStomps / eachMove
         let bootTop     = bottle.offsetTop
         console.log("bottleDelta: ", bottleDelta)
@@ -92,7 +92,7 @@
 
         for (let s = 0; s < maxStomps; s++) {
             console.log("stomp #: ", s)
-            setTimeout(stomp(boot, bottle, stompRate, eachMove, bottleDelta), pause)
+            setTimeout(stomp(boot, bottle, stompRate, eachMove), pause)
         }
     }
 
