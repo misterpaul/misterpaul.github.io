@@ -65,7 +65,7 @@
     }
 
     function moveBoot(boot, bottle, delta) {
-        boot.style.top= parsInt(boot.offsetTop + delta) + "px";
+        boot.style.top= parseInt(boot.offsetTop + delta) + "px";
         bottle.style.height=parseInt(bottle.height - 1) + "px"
         bottle.style.width=parseInt(bottle.width - 1) + "px";
     }
