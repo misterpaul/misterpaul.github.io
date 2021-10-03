@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <script>
-    let version = 28
+    let version = 29
     let scaleDownFactor = .75
     let scaleUpFactor = 1.5
     let bottleMass = "23g" // REF 1
@@ -71,17 +71,17 @@
         bottle.style.width=parseInt(bottle.width - 1) + "px";
     }
 
-    function stomp(boot, bottle, stompRate, distance, eachMove) {
+    function stomp(boot, bottle, stompRate, distance, stepSize) {
         initBoot(boot)
         for (let dropfoot = 0; dropfoot < distance; dropfoot++) {
-            setTimeout(moveBoot(boot, bottle), stompRate, eachMove)
+            setTimeout(moveBoot(boot, bottle, stepSize), stompRate)
         }            
 
     }
 
     function crushIt () {
         let maxStomps   = 5
-        let eachMove    = 10    // px  - how far to move in each iteration
+        let stepSize    = 10    // px  - how far to move in each iteration
         let stompRate   = 100  // milliseconds - how long to wait between movements within each stomp
         let pause       = 1000 // milliseconds - how long to wait between stomps
         let boot        = document.getElementById('boot')
@@ -93,7 +93,7 @@
         for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
             console.log("stomp #: ", s)
             stompDistance = s*eachStomp
-            setTimeout(stomp(boot, bottle, stompRate, stompDistance, eachMove), pause)
+            setTimeout(stomp(boot, bottle, stompRate, stompDistance, stepSize), pause)
         }
     }
 
