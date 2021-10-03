@@ -24,8 +24,6 @@
 }
 
 .water-bottle {
-    position:relative;
-    left: 0px;          /***** set to (water-bottle.width/2 - boot.width/2) > 0 ? (water-bottle.width/2 - boot.width/2) : 0 *****/
     padding: 0px;
     width: 180px;
     height: 180px; 
@@ -38,9 +36,6 @@
 }
 
 .boot {
-    position:relative; 
-    top: 0px;
-    left: 0px;          /***** set to (water-bottle.width/2 - boot.width/2) > 0 ? (water-bottle.width/2 - boot.width/2) : 0 *****/
     padding: 0px;
     width: 180px;
     height: 180px; 

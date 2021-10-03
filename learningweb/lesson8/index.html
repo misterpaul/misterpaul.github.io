@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <script>
-    let version = 32
+    let version = 33
     let scaleDownFactor = .75
     let scaleUpFactor = 1.5
     let bottleMass = "23g" // REF 1
@@ -15,6 +15,7 @@
         "t:g": 907185, // tons:grams
         "bottle:g": 23,
     }
+    let initialBootTop =  document.getElementById('boot').style.offsetTop
 
     function sleep(milliseconds) {
         const date = Date.now();
@@ -61,12 +62,12 @@
     }
 
     function initBoot(boot) {
-        boot.offsetTop = "0px"
+        boot.offsetTop = initialBootTop
         boot.style.visibility='visible'
     }
 
     function moveBoot(boot, bottle, delta) {
-        boot.style.top= parseInt(boot.offsetTop + delta) + "px";
+        boot.style.top= parseInt(delta) + "px";
         bottle.style.height=parseInt(bottle.height - delta) + "px"  
         bottle.style.width=parseInt(bottle.width - delta) + "px";
     }
