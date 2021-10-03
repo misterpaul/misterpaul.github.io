@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <script>
-    let version = 26
+    let version = 27
     let scaleDownFactor = .75
     let scaleUpFactor = 1.5
     let bottleMass = "23g" // REF 1
@@ -73,7 +73,7 @@
 
     function stomp(boot, bottle, stompRate, distance, eachMove) {
         for (let dropfoot = 0; dropfoot < distance; dropfoot++) {
-            initBoot()
+            initBoot(boot)
             setTimeout(moveBoot(boot, bottle), stompRate, eachMove)
         }            
 
