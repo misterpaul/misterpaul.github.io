@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 35
+    let version = 36
     let scaleDownFactor = .75
     let scaleUpFactor = 1.5
     let bottleMass = "23g" // REF 1
@@ -15,8 +15,23 @@
         "t:g": 907185, // tons:grams
         "bottle:g": 23,
     }
-    let initialBootTop =  document.getElementById('boot').style.offsetTop
+    let boot        = document.getElementById('boot')
+    let bottle      = document.getElementById('water-bottle')
+
+    let initialBootTop = getTotalOffset ( boot )
+    let initialBottleTop = getTotalOffset ( bottle )
+    let bootTop = initialBootTop
+    let bottleTop = initialBottleTop
+    
     // let initialBootTop = getComputedStyle(document.getElementById('boot')).offsetTop
+
+    function getTotalOffset ( domElement, isHorizontal = false ) {
+        let returnValue = 0
+
+        if ( domElement ) {
+            returnValue = getTotalOffset ( domElement.offsetParent, direction) + ( isHorizontal ? domElement.offsetLeft : domElement.offsetTop )
+        }
+    }
 
     function sleep(milliseconds) {
         const date = Date.now();
@@ -57,26 +72,33 @@
         document.getElementById("water-bottle").style.height = scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleDownFactor)
     }
     
-    function scaleUp() {
+    function scaleUp () {
         document.getElementById("water-bottle").style.width = scale(getComputedStyle(document.getElementById("water-bottle")).width, scaleUpFactor)
         document.getElementById("water-bottle").style.height =  scale(getComputedStyle(document.getElementById("water-bottle")).height, scaleUpFactor)
     }
 
-    function initBoot(boot) {
-        boot.offsetTop = initialBootTop
+    function initBoot () {
+        bootTop = initialBootTop
+        boot.style.top = bootTop
         boot.style.visibility='visible'
     }
 
-    function moveBoot(boot, bottle, delta) {
-        boot.style.top= parseInt(delta) + "px";
-        bottle.style.height=parseInt(bottle.height - delta) + "px"  
-        bottle.style.width=parseInt(bottle.width - delta) + "px";
+    function moveBoot ( delta ) {
+        bootTop = parseInt(bootTop + delta)
+        let bootBottom = bootTop + boot.height
+        boot.style.top= bootTop + "px";
+        if (bootBottom > bottleTop) {
+            bottleDelta = bottleTop - bootBottom
+            bottleTop = bootBottom
+            bottle.style.height=parseInt(bottle.height - bottleDelta) + "px"  
+            bottle.style.width=parseInt(bottle.width - bottleDelta) + "px";    
+        }
     }
 
-    function stomp(boot, bottle, stompRate, distance, stepSize) {
-        initBoot(boot)
+    function stomp(stompRate, distance, stepSize) {
+        initBoot()
         for (let dropfoot = 0; dropfoot < distance/stepSize; dropfoot++) {
-            setTimeout(moveBoot(boot, bottle, stepSize), stompRate)
+            setTimeout(moveBoot(stepSize), stompRate)
         }            
 
     }
@@ -86,16 +108,14 @@
         let stepSize    = 10    // px  - how far to move in each iteration
         let stompRate   = 2000  // milliseconds - how long to wait between movements within each stomp
         let pause       = 1000 // milliseconds - how long to wait between stomps
-        let boot        = document.getElementById('boot')
-        let bottle      = document.getElementById('water-bottle')
         let eachStomp   = (bottle.offsetHeight / maxStomps)
 
         alert("Uhhh... We probably should crush it first...")
 
         for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
             console.log("stomp #: ", s)
-            stompDistance = s*eachStomp
-            setTimeout(stomp(boot, bottle, stompRate, stompDistance, stepSize), pause)
+            stompDistance = s*eachStomp + bootTop - bottleTop
+            setTimeout(stomp(stompRate, stompDistance, stepSize), pause)
         }
     }
 
