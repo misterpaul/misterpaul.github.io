@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 38
+    let version = 39
     let scaleDownFactor = .75
     let scaleUpFactor = 1.5
     let bottleMass = "23g" // REF 1
@@ -16,7 +16,7 @@
         "bottle:g": 23,
     }
     
-    // let initialBootTop = getComputedStyle(document.getElementById('boot')).offsetTop
+    // let boot.initialTop = getComputedStyle(document.getElementById('boot')).offsetTop
 
     function getTotalOffset ( domElement, isHorizontal = false ) {
         let returnValue = 0
@@ -71,18 +71,18 @@
     }
 
     function initBoot () {
-        bootTop = initialBootTop
-        boot.style.top = bootTop
+        boot.absoluteTop = boot.initialTop
+        boot.style.top = boot.absoluteTop
         boot.style.visibility='visible'
     }
 
     function moveBoot ( delta ) {
-        bootTop = parseInt(bootTop + delta)
-        let bootBottom = bootTop + boot.height
-        boot.style.top= bootTop + "px";
-        if (bootBottom > bottleTop) {
-            bottleDelta = bottleTop - bootBottom
-            bottleTop = bootBottom
+        boot.absoluteTop = parseInt(boot.absoluteTop + delta)
+        let bootBottom = boot.absoluteTop + boot.height
+        boot.style.top= boot.absoluteTop + "px";
+        if (bootBottom > bottle.absoluteTop) {
+            bottleDelta = bottle.absoluteTop - bootBottom
+            bottle.absoluteTop = bootBottom
             bottle.style.height=parseInt(bottle.height - bottleDelta) + "px"  
             bottle.style.width=parseInt(bottle.width - bottleDelta) + "px";    
         }
@@ -101,10 +101,10 @@
         boot        = document.getElementById('boot')
         bottle      = document.getElementById('water-bottle')
 
-        initialBootTop = getTotalOffset ( boot )
-        initialBottleTop = getTotalOffset ( bottle )
-        bootTop = initialBootTop
-        bottleTop = initialBottleTop
+        boot.initialTop = getTotalOffset ( boot )
+        bottle.initialTop = getTotalOffset ( bottle )
+        boot.absoluteTop = boot.initialTop
+        bottle.absoluteTop = bottle.initialTop
 
         let maxStomps   = 5
         let stepSize    = 10    // px  - how far to move in each iteration
@@ -116,7 +116,7 @@
 
         for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
             console.log("stomp #: ", s)
-            stompDistance = s*eachStomp + bootTop - bottleTop
+            stompDistance = s*eachStomp + (bottle.absoluteTop - (boot.absoluteTop + boot.height))
             setTimeout(stomp(stompRate, stompDistance, stepSize), pause)
         }
     }
