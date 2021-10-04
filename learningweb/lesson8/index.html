@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 36
+    let version = 37
     let scaleDownFactor = .75
     let scaleUpFactor = 1.5
     let bottleMass = "23g" // REF 1
@@ -15,13 +15,6 @@
         "t:g": 907185, // tons:grams
         "bottle:g": 23,
     }
-    let boot        = document.getElementById('boot')
-    let bottle      = document.getElementById('water-bottle')
-
-    let initialBootTop = getTotalOffset ( boot )
-    let initialBottleTop = getTotalOffset ( bottle )
-    let bootTop = initialBootTop
-    let bottleTop = initialBottleTop
     
     // let initialBootTop = getComputedStyle(document.getElementById('boot')).offsetTop
 
@@ -104,6 +97,15 @@
     }
 
     function crushIt () {
+        // globals. migrate to creating objects boot & bottle
+        boot        = document.getElementById('boot')
+        bottle      = document.getElementById('water-bottle')
+
+        initialBootTop = getTotalOffset ( boot )
+        initialBottleTop = getTotalOffset ( bottle )
+        bootTop = initialBootTop
+        bottleTop = initialBottleTop
+
         let maxStomps   = 5
         let stepSize    = 10    // px  - how far to move in each iteration
         let stompRate   = 2000  // milliseconds - how long to wait between movements within each stomp
