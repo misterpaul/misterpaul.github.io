@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 3
+    let version = 4
     let bottleMass = "23g" // REF 1
     let conversionTable = {
         // to keep it simple, put bigItem:littleItem so the values are > 1
@@ -70,7 +70,7 @@
         let keepGoing = true
         let bottleSize
 
-        boot.absoluteTop = parseInt(boot.absoluteTop + delta)
+        boot.absoluteTop = parseInt(boot.absoluteTop + step)
         let bootBottom = boot.absoluteTop + boot.height
         if (bootBottom > bottle.absoluteTop) {
             bottleDelta = bootBottom - bottle.absoluteTop
