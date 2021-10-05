@@ -75,7 +75,7 @@
         if (bootBottom > bottle.absoluteTop) {
             bottleDelta = bootBottom - bottle.absoluteTop
             // max amount we can move down is to bootBottom = bottleBottom - 1 (so we have a 1 px bottle)
-            if (bottleDelta < ( bottle.style.height + 1)) {
+            if (bottleDelta < ( bottle.height + 1)) {
                 // ok, we can crush the bottle by bottleDelta and keep going
                 bottleSize = parseInt (bottle.height - bottleDelta) + "px"
             } else {
