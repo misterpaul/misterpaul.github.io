@@ -92,7 +92,7 @@
     function stomp(stompRate, distance, stepSize) {
         initBoot()
         for (let dropfoot = 0; dropfoot < distance/stepSize; dropfoot++) {
-            setTimeout(moveBoot(stepSize), stompRate)
+            window.requestAnimationFrame(moveBoot(stepSize), stompRate)
         }            
 
     }
@@ -118,7 +118,8 @@
         for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
             console.log("stomp #: ", s)
             stompDistance = s*eachStomp + (bottle.absoluteTop - (boot.absoluteTop + boot.height))
-            setTimeout(stomp(stompRate, stompDistance, stepSize), pause)
+            //setTimeout(stomp(stompRate, stompDistance, stepSize), pause)
+            window.requestAnimationFrame(stomp(stompRate, stompDistance, stepSize))
         }
     }
 
