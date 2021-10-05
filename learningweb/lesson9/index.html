@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 0
+    let version = 1
     let bottleMass = "23g" // REF 1
     let conversionTable = {
         // to keep it simple, put bigItem:littleItem so the values are > 1
@@ -73,7 +73,7 @@
         boot.absoluteTop = parseInt(boot.absoluteTop + delta)
         let bootBottom = boot.absoluteTop + boot.height
         if (bootBottom > bottle.absoluteTop) {
-            bottleDelta = bottle.absoluteTop - bootBottom
+            bottleDelta = bootBottom - bottle.absoluteTop
             // max amount we can move down is to bootBottom = bottleBottom - 1 (so we have a 1 px bottle)
             if (bottleDelta < ( bottle.style.height + 1)) {
                 // ok, we can crush the bottle by bottleDelta and keep going
