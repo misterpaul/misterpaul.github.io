@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plastics</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+  <script>
+    let version = 0
+    let bottleMass = "23g" // REF 1
+    let conversionTable = {
+        // to keep it simple, put bigItem:littleItem so the values are > 1
+        "kg:g": 10E3,
+        "t:g": 907185, // tons:grams
+        "bottle:g": 23,
+    }
+    
+    // let boot.initialTop = getComputedStyle(document.getElementById('boot')).offsetTop
+
+    function getTotalOffset ( domElement, isHorizontal = false ) {
+        let returnValue = 0
+
+        if ( domElement ) {
+            returnValue = getTotalOffset ( domElement.offsetParent, isHorizontal) + ( isHorizontal ? domElement.offsetLeft : domElement.offsetTop )
+        }
+        return returnValue
+    }
+
+    function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+    }
+
+    function convert (num_plus_unit, new_unit) {
+        // takes a string that consists of a number + units, and converts it to the new unit
+        let array=num_plus_unit.match(/(-?[\d.]+)([a-z%]*)/)
+        let num=array[1]
+        let unit=array[2]
+        let conversion = unit + ":" + new_unit
+        let inverse = new_unit + ":" + unit
+        let newValue = NaN   // default if conversion not in table
+        
+        if ( conversionTable.hasOwnProperty(conversion) ) {
+            let ratio = conversionTable[conversion]
+            newValue = scale( num + new_unit, ratio)
+        } else if (conversionTable.hasOwnProperty(inverse)) {
+            ratio = 1/conversionTable[inverse]
+            newValue = scale( num + new_unit, ratio)
+        }
+
+        return newValue
+    }
+
+    function scale (num_plus_unit, scaling_factor) {
+        // takes a string that consists of a number + units, and multiplies it by a scaling_factor
+        let array=num_plus_unit.match(/(-?[\d.]+)([a-z%]*)/)
+        return array[1] * scaling_factor + array[2]
+    }
+
+
+    function initBoot () {
+        boot.absoluteTop = boot.initialTop
+        boot.style.top = boot.absoluteTop
+        boot.style.visibility='visible'
+    }
+
+    function moveBoot ( delta ) {
+        let keepGoing = true
+        let bottleSize
+
+        boot.absoluteTop = parseInt(boot.absoluteTop + delta)
+        let bootBottom = boot.absoluteTop + boot.height
+        if (bootBottom > bottle.absoluteTop) {
+            bottleDelta = bottle.absoluteTop - bootBottom
+            // max amount we can move down is to bootBottom = bottleBottom - 1 (so we have a 1 px bottle)
+            if (bottleDelta < ( bottle.style.height + 1)) {
+                // ok, we can crush the bottle by bottleDelta and keep going
+                bottleSize = parseInt (bottle.height - bottleDelta) + "px"
+            } else {
+                // crush the bottle to 1px and stop crushing
+                bottleSize = "1px"
+                boot.absoluteTop = bottle.absoluteTop + bottle.style.height - boot.height -1
+                keepGoing = false
+            }
+            bottle.absoluteTop = bootBottom
+            bottle.style.height=bottleSize  
+            bottle.style.width=bottleSize 
+            bottle.style.offsetLeft = parseInt(bottle.style.offsetLeft + bottleDelta/2)
+        }
+        boot.style.top= boot.absoluteTop + "px";
+        if (keepGoing) {
+            window.requestAnimationFrame ( moveBoot ( delta ))
+        }
+
+    }
+
+    function stomp(stompRate, distance, stepSize) {
+        initBoot()
+        window.requestAnimationFrame (moveBoot ( stepSize ))
+    }
+
+    function crushIt () {
+        // globals. migrate to creating objects boot & bottle
+        boot        = document.getElementById('boot')
+        bottle      = document.getElementById('water-bottle')
+
+        boot.initialTop = getTotalOffset ( boot )
+        boot.initialLeft = getTotalOffset ( boot, true )
+        bottle.initialTop = getTotalOffset ( bottle )
+        bottle.initialLeft = getTotalOffset ( bottle, true )
+
+        boot.absoluteTop = boot.initialTop
+        bottle.absoluteTop = bottle.initialTop
+        bottle.absoluteLeft = bottle.initialLeft
+
+        let maxStomps   = 5
+        let stepSize    = 10    // px  - how far to move in each iteration
+        let stompRate   = 2000  // milliseconds - how long to wait between movements within each stomp
+        let pause       = 1000 // milliseconds - how long to wait between stomps
+        let eachStomp   = (bottle.offsetHeight / maxStomps)
+
+        // alert("Uhhh... We probably should crush it first...")
+
+        stomp ( stompRate, 0, stepSize)
+/********
+        for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
+            console.log("stomp #: ", s)
+            stompDistance = s*eachStomp + (bottle.absoluteTop - (boot.absoluteTop + boot.height))
+            //setTimeout(stomp(stompRate, stompDistance, stepSize), pause)
+            window.requestAnimationFrame(stomp(stompRate, stompDistance, stepSize))
+        }
+**************/
+    }
+
+    </script>      
+</head>
+<body> 
+    <b>Scaling!</b>
+    <div class="outer-box">
+        <div class="inner-box">
+            <div class="bottles_in_a_ton">
+                <table>
+                    <tr>
+                        <td  align="bottom">
+                            <img src="../images/boot-svgrepo-com.svg" alt="Boot SVG" title="Boot SVG" class="boot" id="boot"><br>
+                            <img src="../images/water-bottle-svgrepo-com.svg" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
+                            This is a 1-liter water bottle. It contains about 23 grams of plastic.
+                        </td>
+                        <td  align="bottom">
+                            <img src="../images/dumpster-svgrepo-com.svg" alt="Dumpster SVG" title="Dumpster SVG" class="dumpster" id="dumpster"><br>
+                            This is a dumpster. Lets fill it with a ton of plastic. That's <em>39,443</em> 1-liter water bottles.... 
+                            <button type="button" class="learn" id="fill_it" onclick="crushIt()">Fill It!</button>
+                        </td>
+                    </tr>
+                </table>
+                
+
+            </div>
+        </div>
+        <div class="lesson">
+            Learn about plastic  
+            <ol>
+                <li>Most discussions of plastic talk about tons of plastic. How many plastic bottles are in a ton of plastic? <button type="button" class="learn">Find Out!</button></li>
+            </ol> 
+        </div>
+    </div>
+
+</body>
+</html>
