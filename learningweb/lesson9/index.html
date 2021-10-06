@@ -5,7 +5,8 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 4
+    let version = 6
+    let crushTime = 5 // time to completely crush bottle (seconds)
     let bottleMass = "23g" // REF 1
     let conversionTable = {
         // to keep it simple, put bigItem:littleItem so the values are > 1
@@ -13,6 +14,7 @@
         "t:g": 907185, // tons:grams
         "bottle:g": 23,
     }
+
     
     // let boot.initialTop = getComputedStyle(document.getElementById('boot')).offsetTop
 
@@ -66,72 +68,77 @@
         boot.style.visibility='visible'
     }
 
-    function moveBoot ( step ) {
-        let keepGoing = true
-        let bottleSize
+    function moveBoot ( timestamp ) {
+        let keepGoing = false
+        let bootTop, bottleSize, start
 
-        boot.absoluteTop = parseInt(boot.absoluteTop + step)
-        let bootBottom = boot.absoluteTop + boot.height
-        if (bootBottom > bottle.absoluteTop) {
-            bottleDelta = bootBottom - bottle.absoluteTop
-            // max amount we can move down is to bootBottom = bottleBottom - 1 (so we have a 1 px bottle)
-            if (bottleDelta < ( bottle.height + 1)) {
-                // ok, we can crush the bottle by bottleDelta and keep going
-                bottleSize = parseInt (bottle.height - bottleDelta) + "px"
-            } else {
-                // crush the bottle to 1px and stop crushing
-                bottleSize = "1px"
-                boot.absoluteTop = bottle.absoluteTop + bottle.height - boot.height -1
-                keepGoing = false
-            }
-            bottle.absoluteTop = bootBottom
-            bottle.style.height=bottleSize  
-            bottle.style.width=bottleSize 
-            bottle.style.offsetLeft = parseInt(bottle.style.offsetLeft + bottleDelta/2)
+        if (start === undefined) {
+            start = timestamp
         }
-        boot.style.top= boot.absoluteTop + "px";
+        const elapsed = timestamp - start;
+
+        bootTop = boot.location ( elapsed )
+        bottleSize = bottle.size ( elapsed )
+
+        boot.style.top = parseInt( bootTop ) + "px"
+        bottle.style.width=parseInt (bottleSize) + "px"
+        bottle.style.height=parseInt (bottleSize) + "px"
+
+        if( (bottleSize > bottle.minSize) {
+            keepGoing = true
+        }
+
         if (keepGoing) {
-            window.requestAnimationFrame ( moveBoot ( step ))
+            window.requestAnimationFrame ( moveBoot )
         }
 
-    }
-
-    function stomp(stompRate, distance, stepSize) {
-        initBoot()
-        window.requestAnimationFrame (moveBoot ( stepSize ))
     }
 
     function crushIt () {
         // globals. migrate to creating objects boot & bottle
         boot        = document.getElementById('boot')
         bottle      = document.getElementById('water-bottle')
+        bottle.minSize     = 4  // min size of bottle when crushed
+        // ################# REDO with a duration, and calculate where the boot should be and the size of the bottle at any time (t)
+
+        bottle.initialTop = getTotalOffset ( bottle )
+        console.log("bottle initial top: " + bottle.initialTop + ", bottle top: " + bottle.top)
+        bottle.initialLeft = getTotalOffset ( bottle, true )
+        bottle.bottom = bottle.initialTop + bottle.height
 
         boot.initialTop = getTotalOffset ( boot )
+        console.log("boot initial top: " + boot.initialTop + ", boot top: " + boot.top)
         boot.initialLeft = getTotalOffset ( boot, true )
-        bottle.initialTop = getTotalOffset ( bottle )
-        bottle.initialLeft = getTotalOffset ( bottle, true )
+        boot.verticalDistance =  bottle.bottom - bottle.minSize - (boot.initialTop + boot.height)
+        boot.verticalMoveRate = boot.verticalDistance / crushTime / 1000  // pixels per millisecond
 
-        boot.absoluteTop = boot.initialTop
-        bottle.absoluteTop = bottle.initialTop
-        bottle.absoluteLeft = bottle.initialLeft
-
-        let maxStomps   = 5
-        let stepSize    = 10    // px  - how far to move in each iteration
-        let stompRate   = 2000  // milliseconds - how long to wait between movements within each stomp
-        let pause       = 1000 // milliseconds - how long to wait between stomps
-        let eachStomp   = (bottle.offsetHeight / maxStomps)
-
-        // alert("Uhhh... We probably should crush it first...")
-
-        stomp ( stompRate, 0, stepSize)
-/********
-        for (let s = 1; s <= maxStomps; s++) {   // start with 1 because of the multiplication below
-            console.log("stomp #: ", s)
-            stompDistance = s*eachStomp + (bottle.absoluteTop - (boot.absoluteTop + boot.height))
-            //setTimeout(stomp(stompRate, stompDistance, stepSize), pause)
-            window.requestAnimationFrame(stomp(stompRate, stompDistance, stepSize))
+        boot.location = function ( t ) { 
+            let y, loc
+            y = boot.verticalMoveRate * t + boot.initialTop
+            if (y > boot.initialTop + boot.verticalDistance ) {
+                loc = y
+            } else {
+                loc = boot.initialTop + boot.verticalDistance
+            }
+            return loc
         }
-**************/
+
+        bottle.size = function ( t ) { 
+            let size
+            bootSole = boot.location(t) + boot.height
+            if (bootSole > bottle.initialTop) {
+                size = bottle.height
+            } else {
+                size = bottle.bottom - bootSole
+            }
+            return size
+        }
+
+         alert("Uhhh... We probably should crush the bottle first...")
+
+        //initBoot()  // need to address init boot.  as written, it won't really work.
+        window.requestAnimationFrame ( moveBoot )
+
     }
 
     </script>      
@@ -143,12 +150,12 @@
             <div class="bottles_in_a_ton">
                 <table>
                     <tr>
-                        <td  align="bottom">
+                        <td align="bottom">
                             <img src="../images/boot-svgrepo-com.svg" alt="Boot SVG" title="Boot SVG" class="boot" id="boot"><br>
                             <img src="../images/water-bottle-svgrepo-com.svg" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
                             This is a 1-liter water bottle. It contains about 23 grams of plastic.
                         </td>
-                        <td  align="bottom">
+                        <td align="bottom">
                             <img src="../images/dumpster-svgrepo-com.svg" alt="Dumpster SVG" title="Dumpster SVG" class="dumpster" id="dumpster"><br>
                             This is a dumpster. Lets fill it with a ton of plastic. That's <em>39,443</em> 1-liter water bottles.... 
                             <button type="button" class="learn" id="fill_it" onclick="crushIt()">Fill It!</button>
