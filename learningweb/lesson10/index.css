@@ -39,4 +39,5 @@
     padding: 0px;
     width: 180px;
     height: 180px; 
+    visibility: 'hidden';
 }
