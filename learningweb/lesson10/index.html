@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 5
+    let version = 7
     let crushTime = 5000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -22,6 +22,7 @@
         boot.initialTop = boot.offsetTop
         boot.bottom = boot.initialTop + boot.height
         boot.verticalDistance =  bottle.bottom - bottle.minSize - (boot.initialTop + boot.height)
+        console.log("vertDist: " + boot.verticalDistance + ", bottle.bottom: " + bottle.bottom + ", bottle.minSize: " + bottle.minSize + ", boot top: " + boot.initialTop + ", height: " + boot.height + ", diff: " + bottle.bottom - bottle.minSize - (boot.initialTop + boot.height)
         boot.verticalMoveRate = boot.verticalDistance / crushTime  // pixels per millisecond
 
         boot.reposition = function ( t ) { 
@@ -34,8 +35,8 @@
         bottle.rescale = function () { 
             // yeah, this next line is confusing and should probably be if/then statements
             let size = Math.max(Math.min(bottle.bottom - boot.bottom, bottle.height), bottle.minSize)
-            console.log( "size: " +  size + ", bottle.bottom - boot.bottom: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
-            bottle.style.transform = 'scale(' + size + 'px)'
+            console.log( "size: " +  size + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
+            bottle.style.transform = 'scale(' + size + 'px, ' + size + 'px)'
         }
 
     }
@@ -59,10 +60,12 @@
     }
 
     function crushIt () {
+        boot.style.visibility='invisible'
+        boot.reposition(0)
+        
  
          alert("Uhhh... We probably should crush the bottle first...")
-
-        //initBoot()  // need to address init boot.  as written, it won't really work.
+        boot.style.visibility='visible'
         window.requestAnimationFrame ( moveBoot )
 
     }
