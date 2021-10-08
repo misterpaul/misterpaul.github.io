@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 7
+    let version = 8
     let crushTime = 5000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -22,7 +22,7 @@
         boot.initialTop = boot.offsetTop
         boot.bottom = boot.initialTop + boot.height
         boot.verticalDistance =  bottle.bottom - bottle.minSize - (boot.initialTop + boot.height)
-        console.log("vertDist: " + boot.verticalDistance + ", bottle.bottom: " + bottle.bottom + ", bottle.minSize: " + bottle.minSize + ", boot top: " + boot.initialTop + ", height: " + boot.height + ", diff: " + bottle.bottom - bottle.minSize - (boot.initialTop + boot.height)
+        console.log("vertDist: " + boot.verticalDistance + ", bottle.bottom: " + bottle.bottom + ", bottle.minSize: " + bottle.minSize + ", boot top: " + boot.initialTop + ", height: " + boot.height + ", diff: " + (bottle.bottom - bottle.minSize - (boot.initialTop + boot.height)))
         boot.verticalMoveRate = boot.verticalDistance / crushTime  // pixels per millisecond
 
         boot.reposition = function ( t ) { 
