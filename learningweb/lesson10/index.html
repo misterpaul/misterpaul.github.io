@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 10
+    let version = 11
     let crushTime = 5000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -31,8 +31,8 @@
             // distance to move is the lesser of the calculated distance, or the max distance
             let dist = Math.min(boot.verticalMoveRate * t, boot.verticalDistance)
             boot.style.transform = 'translateY(' + dist + 'px)'
-            boot.bottom = boot.top + boot.height
-            console.log( "dist: " + dist + ", boot.top: " + boot.top + ", boot.bottom:" + boot.bottom)
+            boot.bottom = boot.offsetTop + boot.height
+            console.log( "dist: " + dist + ", boot.top: " + boot.offsetTop + ", boot.bottom:" + boot.bottom)
         }
 
         bottle.rescale = function () { 
@@ -63,7 +63,7 @@
     }
 
     function crushIt () {
-        boot.style.visibility='invisible'
+        boot.style.visibility='hidden'
         boot.reposition(0)
         
  
