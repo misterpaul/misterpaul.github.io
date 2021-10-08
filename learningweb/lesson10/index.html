@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 11
+    let version = 12
     let crushTime = 5000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -31,15 +31,15 @@
             // distance to move is the lesser of the calculated distance, or the max distance
             let dist = Math.min(boot.verticalMoveRate * t, boot.verticalDistance)
             boot.style.transform = 'translateY(' + dist + 'px)'
-            boot.bottom = boot.offsetTop + boot.height
-            console.log( "dist: " + dist + ", boot.top: " + boot.offsetTop + ", boot.bottom:" + boot.bottom)
+            boot.bottom = boot.top + boot.height
+            console.log( "dist: " + dist + ", boot.top: " + boot.top + ", boot.bottom:" + boot.bottom)
         }
 
         bottle.rescale = function () { 
             // yeah, this next line is confusing and should probably be if/then statements
             let size = Math.max(Math.min(bottle.bottom - boot.bottom, bottle.height), bottle.minSize)
             console.log( "scale: " +  size/bottle.initialSize + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
-            bottle.style.transform = 'scale(' + (size/bottle.initialSize) + ') translateY(' + (bottle.initialSize - size) + ')'
+            bottle.style.transform = 'scale(' + (size/bottle.initialSize) + ', ' +  (size/bottle.initialSize) + ') translateY(' + (bottle.initialSize - size) + ')'
         }
 
     }
