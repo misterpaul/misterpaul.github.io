@@ -5,8 +5,8 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 3
-    let crushTime = 5000 // time to completely crush bottle (milliseconds)
+    let version = 4
+    let crushTime = 2000 // time to completely crush bottle (milliseconds)
     let crushStart
 
     function pageInit () {
@@ -34,6 +34,7 @@
         bottle.rescale = function () { 
             // yeah, this next line is confusing and should probably be if/then statements
             let size = Math.max(Math.min(bottle.bottom - boot.bottom, bottle.height), bottle.minSize)
+            console.log( "size: " +  size + ", bottle.bottom - boot.bottom: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
             bottle.style.transform = 'scale(' + size + 'px)'
         }
 
