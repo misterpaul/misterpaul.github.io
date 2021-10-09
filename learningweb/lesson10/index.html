@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 20
+    let version = 21
     let crushTime = 5000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -41,7 +41,7 @@
             let size = Math.max(Math.min(bottle.bottom - boot.bottom, bottle.height), bottle.minSize)
             console.log( "scale: " +  size/bottle.initialSize + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
             //bottle.style.transform = 'scale(' + (size/bottle.initialSize) + ',' +  (size/bottle.initialSize) + ') translateY(' + (bottle.initialSize - size) + 'px)'
-            bottle.style.transform = 'translateY(' + (bottle.initialSize - size) + 'px)'
+            bottle.style.transform = 'translateY(' + (bottle.initialSize - size) + 'px) scale(' + (size/bottle.initialSize) + ',' +  (size/bottle.initialSize) + ')'
         }
 
     }
