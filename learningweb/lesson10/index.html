@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 24
+    let version = 25
     let crushTime = 5000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -47,7 +47,7 @@
             } else if (bottle.bottom - boot.bottom <= bottle.minSize ) {
                 // stop crunching
                 size = bottle.minSize
-                deltaY = boot.bottom
+                deltaY = boot.bottom - bottle.minSize
             } else {
                 // we're in the midst of crunching
                 size = bottle.bottom - boot.bottom
