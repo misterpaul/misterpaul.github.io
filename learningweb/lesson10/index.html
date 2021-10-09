@@ -5,8 +5,8 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 25
-    let crushTime = 5000 // time to completely crush bottle (milliseconds)
+    let version = 26
+    let crushTime = 30000 // time to completely crush bottle (milliseconds)
     let crushStart
 
     function pageInit () {
@@ -14,7 +14,7 @@
         boot        = document.getElementById('boot')
         boot.style.visibility = 'hidden'
         bottle      = document.getElementById('water-bottle')
-        bottle.minSize     = 4  // min size of bottle when crushed
+        bottle.minSize     = 40  // min size of bottle when crushed
 
         bottle.initialTop = bottle.offsetTop
         bottle.initialLeft = bottle.offsetLeft
@@ -51,7 +51,7 @@
             } else {
                 // we're in the midst of crunching
                 size = bottle.bottom - boot.bottom
-                deltaY = bottle.initialSize - size
+                deltaY = bottle.initialSize - size/2
             }
             console.log( "scale: " +  size/bottle.initialSize + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
             //bottle.style.transform = 'scale(' + (size/bottle.initialSize) + ',' +  (size/bottle.initialSize) + ') translateY(' + (bottle.initialSize - size) + 'px)'
