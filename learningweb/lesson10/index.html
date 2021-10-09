@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 21
+    let version = 22
     let crushTime = 5000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -38,10 +38,24 @@
 
         bottle.rescale = function () { 
             // yeah, this next line is confusing and should probably be if/then statements
-            let size = Math.max(Math.min(bottle.bottom - boot.bottom, bottle.height), bottle.minSize)
+            // let size = Math.max(Math.min(bottle.bottom - boot.bottom, bottle.height), bottle.minSize)
+            let size, deltaY
+            if (bottle.bottom - boot.bottom >=bottle.height) {
+                // boot has not yet touched the bottle
+                size = bottle.height
+                deltaY = 0
+            } else if (bottle.bottom - boot.bottom <= bottle.minSize ) {
+                // stop crunching
+                size = bottle.minSize
+                deltaY = boot.bottom
+            } else {
+                // we're in the midst of crunching
+                size = bottle.bottom - boot.bottom
+                deltaY - bottle.initialSize - size
+            }
             console.log( "scale: " +  size/bottle.initialSize + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
             //bottle.style.transform = 'scale(' + (size/bottle.initialSize) + ',' +  (size/bottle.initialSize) + ') translateY(' + (bottle.initialSize - size) + 'px)'
-            bottle.style.transform = 'translateY(' + (bottle.initialSize - size) + 'px) scale(' + (size/bottle.initialSize) + ',' +  (size/bottle.initialSize) + ')'
+            bottle.style.transform = 'translateY(' + deltaY + 'px) scale(' + (size/bottle.initialSize) + ',' +  (size/bottle.initialSize) + ')'
         }
 
     }
@@ -67,6 +81,7 @@
     function crushIt () {
         boot.style.visibility='hidden'
         boot.reposition(0)
+        bottle.rescale()
         
  
          alert("Uhhh... We probably should crush the bottle first...")
