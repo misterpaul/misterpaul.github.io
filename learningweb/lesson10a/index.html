@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plastics</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+  <script>
+    let version = 39
+    let crushTime = 4000 // time to completely crush bottle (milliseconds)
+    let crushStart
+
+    function pageInit () {
+        // globals. maybe modify the page objects instead, or make these local and pass them as args
+        boot        = document.getElementById('boot')
+        boot.style.visibility = 'hidden'
+        bottle      = document.getElementById('water-bottle')
+        bottle.minSize     = 4  // min bottleSize of bottle when crushed
+
+        //bottle.initialTop = bottle.offsetTop
+        //bottle.initialLeft = bottle.offsetLeft
+        //bottle.initialSize = bottle.height
+        bottle.bottom = bottle.offsetTop + bottle.height
+
+        //boot.initialTop = boot.offsetTop
+        boot.bottom = boot.offsetTop + boot.height
+        boot.verticalDistance =  bottle.bottom - bottle.minSize - (boot.offsetTop + boot.height)
+        console.log("bootTop: " + boot.offsetTop + ", boot bottom: " + boot.bottom + ", bottle.top: " + bottle.offsetTop + ", bottle bottom: "+ bottle.bottom)
+        console.log("vertDist: " + boot.verticalDistance + ", bottle.bottom: " + bottle.bottom + ", bottle.minSize: " + bottle.minSize + ", boot top: " + boot.offsetTop + ", height: " + boot.height )
+        boot.verticalMoveRate = boot.verticalDistance / crushTime  // pixels per millisecond
+    }
+
+    function redraw ( t ) {
+        let bottleSize, bottleDistance, bottleScale
+        // distance to move is the lesser of the calculated distance, or the max distance
+        let bootDistance = Math.min(boot.verticalMoveRate * t, boot.verticalDistance)
+        boot.style.transform = 'translateY(' + bootDistance + 'px)'
+        boot.bottom = boot.offsetTop + bootDistance + boot.height
+        console.log( "bootDistance: " + bootDistance + ", boot.top: " + boot.offsetTop + ", boot.bottom:" + boot.bottom)
+
+        if (bootDistance + boot.offsetTop + boot.height <= bottle.offsetTop) {
+            // boot has not yet touched the bottle
+            bottleSize = bottle.height
+            bottleDistance = 0
+        } else if (bootDistance + boot.offsetTop + boot.height >= bottle.bottom + bottle.minSize ) {
+            // stop crunching
+            bottleSize = bottle.minSize
+            bottleDistance = bootDistance - bottle.minSize
+            // hide the boot
+            boot.style.visibility='hidden'
+        } else {
+            // we're in the midst of crunching
+            bottleSize = bottle.bottom - boot.bottom
+            bottleDistance = bootDistance/2
+        }
+        bottleScale = bottleSize/bottle.height
+        console.log( "size: " + bottleSize + ", bottleDistance: " + bottleDistance + ",scale: " +  bottleSize/bottle.height + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
+        bottle.style.transform = 'translateY(' + bottleDistance + 'px) scale(' + bottleScale + ',' +  bottleScale + ')'
+
+    }
+
+    function moveBoot ( timestamp ) {
+
+        if (crushStart === undefined) {
+            crushStart = timestamp
+        }
+        const elapsed = timestamp - crushStart;
+        console.log("elapsed: " + elapsed)
+
+        redraw ( elapsed )
+
+        if (elapsed < crushTime) {
+            window.requestAnimationFrame ( moveBoot )
+        }
+    }
+
+    function crushIt () {
+        //TODO: initialize boot & bottle (set position & scale) so you can re-run the animation
+        //boot.style.visibility="hidden"
+        //redraw ( 0 )
+ 
+        alert("Perhaps we should crush the bottle first...")
+        boot.style.visibility='visible'
+        window.requestAnimationFrame ( moveBoot )
+
+    }
+
+    </script>      
+</head>
+<body onload="pageInit()"> 
+    <b>Scaling!</b>
+    <div class="outer-box">
+        <div class="inner-box">
+            <div class="bottles_in_a_ton">
+                <table>
+                    <tr>
+                        <td class="boot-bottle-box">
+                            <img src="../images/boot-svgrepo-com.svg" alt="Boot SVG" title="Boot SVG" class="boot" id="boot"><br>
+                            <img src="../images/water-bottle-svgrepo-com.svg" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
+                            This is a 1-liter water bottle. It contains about 23 grams of plastic.
+                        </td>
+                        <td align="bottom">
+                            <img src="../images/dumpster-svgrepo-com.svg" alt="Dumpster SVG" title="Dumpster SVG" class="dumpster" id="dumpster"><br>
+                            This is a dumpster. Lets fill it with a ton of plastic. That's <em>39,443</em> 1-liter water bottles.... 
+                            <button type="button" class="learn" id="fill_it" onclick="crushIt()">Fill It!</button>
+                        </td>
+                    </tr>
+                </table>
+                
+
+            </div>
+        </div>
+        <div class="lesson">
+            Learn about plastic  
+            <ol>
+                <li>Most discussions of plastic talk about tons of plastic. How many plastic bottles are in a ton of plastic? <button type="button" class="learn">Find Out!</button></li>
+            </ol> 
+        </div>
+    </div>
+
+</body>
+</html>
