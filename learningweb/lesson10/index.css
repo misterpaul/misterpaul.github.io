@@ -41,3 +41,9 @@
     height: 180px; 
     visibility: 'hidden';
 }
+
+.boot-bottle-box {
+    align: bottom;
+    vertical-align: middle;
+    width: 200;
+}
