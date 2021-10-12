@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 27
+    let version = 28
     let crushTime = 30000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -66,7 +66,7 @@
         const elapsed = timestamp - crushStart;
         console.log("elapsed: " + elapsed)
 
-        boot.reposition( elapsed )
+        boot.redraw ( elapsed )
         bottle.rescale()
 
         if (elapsed < crushTime) {
