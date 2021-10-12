@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 34
+    let version = 35
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -75,6 +75,8 @@
 
     function crushIt () {
         //TODO: initialize boot & bottle (set position & scale) so you can re-run the animation
+        boot.style.visibility="hidden"
+        redraw ( 0 )
  
         alert("Perhaps we should crush the bottle first...")
         boot.style.visibility='visible'
