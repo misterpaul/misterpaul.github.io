@@ -5,8 +5,8 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 33
-    let crushTime = 30000 // time to completely crush bottle (milliseconds)
+    let version = 34
+    let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart
 
     function pageInit () {
@@ -14,7 +14,7 @@
         boot        = document.getElementById('boot')
         boot.style.visibility = 'hidden'
         bottle      = document.getElementById('water-bottle')
-        bottle.minSize     = 40  // min bottleSize of bottle when crushed
+        bottle.minSize     = 4  // min bottleSize of bottle when crushed
 
         //bottle.initialTop = bottle.offsetTop
         //bottle.initialLeft = bottle.offsetLeft
