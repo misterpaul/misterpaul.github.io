@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 30
+    let version = 31
     let crushTime = 30000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -16,16 +16,16 @@
         bottle      = document.getElementById('water-bottle')
         bottle.minSize     = 40  // min bottleSize of bottle when crushed
 
-        bottle.initialTop = bottle.offsetTop
-        bottle.initialLeft = bottle.offsetLeft
-        bottle.initialSize = bottle.height
-        bottle.bottom = bottle.initialTop + bottle.height
+        //bottle.initialTop = bottle.offsetTop
+        //bottle.initialLeft = bottle.offsetLeft
+        //bottle.initialSize = bottle.height
+        bottle.bottom = bottle.offsetTop + bottle.height
 
-        boot.initialTop = boot.offsetTop
-        boot.bottom = boot.initialTop + boot.height
-        boot.verticalDistance =  bottle.bottom - bottle.minSize - (boot.initialTop + boot.height)
-        console.log("bootTop: " + boot.initialTop + ", boot bottom: " + boot.bottom + ", bottle.top: " + bottle.initialTop + ", bottle bottom: "+ bottle.bottom)
-        console.log("vertDist: " + boot.verticalDistance + ", bottle.bottom: " + bottle.bottom + ", bottle.minSize: " + bottle.minSize + ", boot top: " + boot.initialTop + ", height: " + boot.height + ", diff: " + (bottle.bottom - bottle.minSize - (boot.initialTop + boot.height)))
+        //boot.initialTop = boot.offsetTop
+        boot.bottom = boot.offsetTop + boot.height
+        boot.verticalDistance =  bottle.bottom - bottle.minSize - (boot.offsetTop + boot.height)
+        console.log("bootTop: " + boot.offsetTop + ", boot bottom: " + boot.bottom + ", bottle.top: " + bottle.offsetTop + ", bottle bottom: "+ bottle.bottom)
+        console.log("vertDist: " + boot.verticalDistance + ", bottle.bottom: " + bottle.bottom + ", bottle.minSize: " + bottle.minSize + ", boot top: " + boot.offsetTop + ", height: " + boot.height )
         boot.verticalMoveRate = boot.verticalDistance / crushTime  // pixels per millisecond
     }
 
@@ -34,24 +34,24 @@
         // distance to move is the lesser of the calculated distance, or the max distance
         let bootDistance = Math.min(boot.verticalMoveRate * t, boot.verticalDistance)
         boot.style.transform = 'translateY(' + bootDistance + 'px)'
-        boot.bottom = boot.initialTop + bootDistance + boot.height
+        boot.bottom = boot.offsetTop + bootDistance + boot.height
         console.log( "bootDistance: " + bootDistance + ", boot.top: " + boot.offsetTop + ", boot.bottom:" + boot.bottom)
 
-        if (bootDistance + boot.height <= bottle.initialTop) {
+        if (bootDistance + boot.offsetTop + boot.height <= bottle.offsetTop) {
             // boot has not yet touched the bottle
             bottleSize = bottle.height
             bottleDistance = 0
-        } else if (bootDistance + boot.height >= bottle.minSize ) {
+        } else if (bootDistance + boot.offsetTop + boot.height >= bottle.minSize ) {
             // stop crunching
             bottleSize = bottle.minSize
             bottleDistance = bootDistance - bottle.minSize
         } else {
             // we're in the midst of crunching
             bottleSize = bottle.bottom - boot.bottom
-            bottleDistance = bottle.initialSize - bottleSize/2
+            bottleDistance = bottle.height - bottleSize/2
         }
-        bottleScale = bottleSize/bottle.initialSize
-        console.log( "size: " + bottleSize + ", bottleDistance: " + bottleDistance + ",scale: " +  bottleSize/bottle.initialSize + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
+        bottleScale = bottleSize/bottle.height
+        console.log( "size: " + bottleSize + ", bottleDistance: " + bottleDistance + ",scale: " +  bottleSize/bottle.height + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
         bottle.style.transform = 'translateY(' + bottleDistance + 'px) scale(' + bottleScale + ',' +  bottleScale + ')'
 
     }
