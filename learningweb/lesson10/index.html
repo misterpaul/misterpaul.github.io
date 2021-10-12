@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 35
+    let version = 36
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -45,6 +45,8 @@
             // stop crunching
             bottleSize = bottle.minSize
             bottleDistance = bootDistance - bottle.minSize
+            // hide the boot
+            boot.style.visibility='hidden'
         } else {
             // we're in the midst of crunching
             bottleSize = bottle.bottom - boot.bottom
@@ -57,8 +59,6 @@
     }
 
     function moveBoot ( timestamp ) {
-        let keepGoing = false
-        let bootTop, bottleSize
 
         if (crushStart === undefined) {
             crushStart = timestamp
