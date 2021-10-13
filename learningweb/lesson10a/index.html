@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 43
+    let version = 44
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -75,7 +75,7 @@
 
         redraw ( elapsed )
 
-        if (elapsed < crushTime) {
+        if (elapsed <= crushTime) {
             window.requestAnimationFrame ( moveBoot )
         }
     }
