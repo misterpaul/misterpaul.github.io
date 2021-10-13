@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 40
+    let version = 41
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -60,6 +60,8 @@
 
     function hideboot () {
         boot.style.visibility = "hidden"
+        boot.style.transform = 'translateY(0px)'
+        bottle.style.transform = 'translateY(0px) scale(1)'
     }
 
     function moveBoot ( timestamp ) {
