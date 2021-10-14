@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 48
+    let version = 49
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart
     let initialize = true
@@ -77,7 +77,7 @@
 
     function crushIt () {
         // set the time to null in case we've run this before
-        crushStart = null
+        delete crushStart
  
         alert("Perhaps we should crush the bottle first...")
         window.requestAnimationFrame ( moveBoot )
