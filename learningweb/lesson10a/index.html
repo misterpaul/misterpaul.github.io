@@ -5,9 +5,10 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 47
+    let version = 48
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart
+    let initialize = true
 
     function pageInit () {
         // globals. maybe modify the page objects instead, or make these local and pass them as args
@@ -31,6 +32,11 @@
 
     function redraw ( t ) {
         let bottleSize, bottleDistance, bottleScale
+        if ( t == 0 ) {
+            // initialize boot and bottle in case we've run this before
+            boot.style.transform = 'translateY(0px)'
+            bottle.style.transform = 'translateY(0px) scale(1)'
+        }
         // distance to move is the lesser of the calculated distance, or the max distance
         let bootDistance = Math.min(boot.verticalMoveRate * t, boot.verticalDistance)
         boot.style.transform = 'translateY(' + bootDistance + 'px)'
@@ -46,22 +52,12 @@
             bottleSize = bottle.bottom - boot.bottom
             bottleDistance = bootDistance/2
         }
-        if (bottleSize <= bottle.minSize) {
-            // we're done crunching
-            boot.style.visibility='hidden'
-        }
         bottleScale = bottleSize/bottle.height
         console.log( "size: " + bottleSize + ", bottleDistance: " + bottleDistance + ",scale: " +  bottleSize/bottle.height + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
         bottle.style.transform = 'translateY(' + bottleDistance + 'px) scale(' + bottleScale + ',' +  bottleScale + ')'
 
     }
 
-    function hideboot () {
-        boot.style.visibility = "hidden"
-        boot.style.transform = 'translateY(0px)'
-        bottle.style.transform = 'translateY(0px) scale(1)'
-        crushStart = null
-    }
 
     function moveBoot ( timestamp ) {
 
@@ -80,10 +76,8 @@
     }
 
     function crushIt () {
-        //TODO: initialize boot & bottle (set position & scale) so you can re-run the animation
-        //boot.style.visibility="hidden"
-        //redraw ( 0 )
-        window.requestAnimationFrame ( hideboot )
+        // set the time to null in case we've run this before
+        crushStart = null
  
         alert("Perhaps we should crush the bottle first...")
         window.requestAnimationFrame ( moveBoot )
