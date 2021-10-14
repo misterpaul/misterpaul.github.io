@@ -1,0 +1,56 @@
+.outer-box {
+    background-color: black;
+    margin: 10px;
+    padding: 20px;
+}
+
+.inner-box {
+    background-color: yellow;
+    border-width: 20px;
+    border-color: aqua;
+    margin: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.lesson {
+    background-color: lightskyblue;
+    margin: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.water-bottle {
+    padding: 0px;
+    width: 180px;
+    height: 180px; 
+}
+
+.dumpster {
+    padding: 5px;
+    width: 1024px;
+    height: 512px; 
+}
+
+.boot {
+    padding: 0px;
+    width: 180px;
+    height: 180px; 
+    visibility: 'hidden';
+}
+
+.boot-bottle-box {
+    align: bottom;
+    vertical-align: middle;
+    width: 200px;
+}
+
+.dumpster-box {
+    align: bottom;
+    vertical-align: middle;
+    width: 1024px;
+}

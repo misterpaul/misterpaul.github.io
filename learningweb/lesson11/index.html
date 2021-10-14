@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plastics</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+  <script>
+    let version = 1
+    let crushTime = 4000 // time to completely crush bottle (milliseconds)
+    let crushStart = -1
+
+    function pageInit () {
+        // globals. maybe modify the page objects instead, or make these local and pass them as args
+        boot                  = document.getElementById('boot')
+        bottle                = document.getElementById('water-bottle')
+        boot.style.visibility = 'hidden'
+        bottle.minSize        = 4  // min bottleSize of bottle when crushed
+
+        bottle.bottom = bottle.offsetTop + bottle.height
+        boot.bottom = boot.offsetTop + boot.height
+        boot.verticalDistance =  bottle.bottom - bottle.minSize - (boot.offsetTop + boot.height)
+        boot.verticalMoveRate = boot.verticalDistance / crushTime  // pixels per millisecond
+    }
+
+    function redraw ( t ) {
+        let bottleSize, bottleDistance, bottleScale
+        if ( t == 0 ) {
+            // initialize boot and bottle in case we've run this before
+            boot.style.transform = 'translateY(0px)'
+            bottle.style.transform = 'translateY(0px) scale(1)'
+        }
+        // distance to move is the lesser of the calculated distance, or the max distance
+        let bootDistance = Math.min(boot.verticalMoveRate * t, boot.verticalDistance)
+        boot.style.transform = 'translateY(' + bootDistance + 'px)'
+        boot.bottom = boot.offsetTop + bootDistance + boot.height
+        console.log( "bootDistance: " + bootDistance + ", boot.top: " + boot.offsetTop + ", boot.bottom:" + boot.bottom)
+
+        if (bootDistance + boot.offsetTop + boot.height <= bottle.offsetTop) {
+            // boot has not yet touched the bottle
+            bottleSize = bottle.height
+            bottleDistance = 0
+        } else {
+            // we're in the midst of crunching
+            bottleSize = bottle.bottom - boot.bottom
+            bottleDistance = bootDistance/2
+        }
+        bottleScale = bottleSize/bottle.height
+        bottle.style.transform = 'translateY(' + bottleDistance + 'px) scale(' + bottleScale + ',' +  bottleScale + ')'
+
+    }
+
+
+    function moveBoot ( timestamp ) {
+
+        boot.style.visibility="visible"
+        if ( crushStart == -1 ) {
+            crushStart = timestamp
+        }
+        const elapsed = timestamp - crushStart;
+
+        redraw ( elapsed )
+
+        if (elapsed <= crushTime) {
+            window.requestAnimationFrame ( moveBoot )
+        }
+    }
+
+    function crushIt () {
+        // set the time to -1 in case we've run this before
+        crushStart = -1
+ 
+        alert("Perhaps we should crush the bottle first...")
+        window.requestAnimationFrame ( moveBoot )
+
+    }
+
+    </script>      
+</head>
+<body onload="pageInit()"> 
+    <b>Scaling!</b>
+    <div class="outer-box">
+        <div class="inner-box">
+            <div class="bottles_in_a_ton">
+                <table>
+                    <tr>
+                        <td class="boot-bottle-box">
+                            <img src="../images/boot-svgrepo-com.svg" alt="Boot SVG" title="Boot SVG" class="boot" id="boot"><br>
+                            <img src="../images/water-bottle-svgrepo-com.svg" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
+                            <p>This is a 1-liter water bottle. It contains about 23 grams of plastic.</p>
+                            <p>Whenever you read about plastic polution, you read about tons of plastic. How many 1-liter bottles are in a ton?</p>
+                            <p><button type="button" class="learn" id="fill_it" onclick="crushIt()">Find Out!</button></p>
+                        </td>
+                        <td class="dumpster-box">
+                            <img src="../images/dumpster-svgrepo-com.svg" alt="Dumpster SVG" title="Dumpster SVG" class="dumpster" id="dumpster"><br>
+                            This is a dumpster. Lets fill it with a ton of plastic. That's <em>39,443</em> 1-liter water bottles.... 
+                           
+                        </td>
+                    </tr>
+                </table>
+                
+
+            </div>
+        </div>
+        <div class="lesson">
+            Learn about plastic  
+            <ol>
+                <li>Most discussions of plastic talk about tons of plastic. How many plastic bottles are in a ton of plastic? <button type="button" class="learn">Find Out!</button></li>
+            </ol> 
+        </div>
+    </div>
+
+</body>
+</html>
