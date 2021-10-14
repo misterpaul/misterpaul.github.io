@@ -5,28 +5,20 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 50
+    let version = 51
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
-    let crushStart
-    let initialize = true
+    let crushStart = -1
 
     function pageInit () {
         // globals. maybe modify the page objects instead, or make these local and pass them as args
-        boot        = document.getElementById('boot')
+        boot                  = document.getElementById('boot')
+        bottle                = document.getElementById('water-bottle')
         boot.style.visibility = 'hidden'
-        bottle      = document.getElementById('water-bottle')
-        bottle.minSize     = 4  // min bottleSize of bottle when crushed
+        bottle.minSize        = 4  // min bottleSize of bottle when crushed
 
-        //bottle.initialTop = bottle.offsetTop
-        //bottle.initialLeft = bottle.offsetLeft
-        //bottle.initialSize = bottle.height
         bottle.bottom = bottle.offsetTop + bottle.height
-
-        //boot.initialTop = boot.offsetTop
         boot.bottom = boot.offsetTop + boot.height
         boot.verticalDistance =  bottle.bottom - bottle.minSize - (boot.offsetTop + boot.height)
-        console.log("bootTop: " + boot.offsetTop + ", boot bottom: " + boot.bottom + ", bottle.top: " + bottle.offsetTop + ", bottle bottom: "+ bottle.bottom)
-        console.log("vertDist: " + boot.verticalDistance + ", bottle.bottom: " + bottle.bottom + ", bottle.minSize: " + bottle.minSize + ", boot top: " + boot.offsetTop + ", height: " + boot.height )
         boot.verticalMoveRate = boot.verticalDistance / crushTime  // pixels per millisecond
     }
 
@@ -53,7 +45,6 @@
             bottleDistance = bootDistance/2
         }
         bottleScale = bottleSize/bottle.height
-        console.log( "size: " + bottleSize + ", bottleDistance: " + bottleDistance + ",scale: " +  bottleSize/bottle.height + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
         bottle.style.transform = 'translateY(' + bottleDistance + 'px) scale(' + bottleScale + ',' +  bottleScale + ')'
 
     }
@@ -62,11 +53,10 @@
     function moveBoot ( timestamp ) {
 
         boot.style.visibility="visible"
-        if (crushStart === undefined || crushStart == -1) {
+        if ( crushStart == -1 ) {
             crushStart = timestamp
         }
         const elapsed = timestamp - crushStart;
-        console.log("elapsed: " + elapsed)
 
         redraw ( elapsed )
 
@@ -96,12 +86,14 @@
                         <td class="boot-bottle-box">
                             <img src="../images/boot-svgrepo-com.svg" alt="Boot SVG" title="Boot SVG" class="boot" id="boot"><br>
                             <img src="../images/water-bottle-svgrepo-com.svg" alt="Water Bottle SVG" title="Water Bottle SVG" class="water-bottle" id="water-bottle"><br>
-                            This is a 1-liter water bottle. It contains about 23 grams of plastic.
+                            <p>This is a 1-liter water bottle. It contains about 23 grams of plastic.</p>
+                            <p>Whenever you read about plastic polution, you read about tons of plastic. How many 1-liter bottles are in a ton?</p>
+                            <p><button type="button" class="learn" id="fill_it" onclick="crushIt()">Find Out!</button></p>
                         </td>
                         <td class="dumpster-box">
                             <img src="../images/dumpster-svgrepo-com.svg" alt="Dumpster SVG" title="Dumpster SVG" class="dumpster" id="dumpster"><br>
                             This is a dumpster. Lets fill it with a ton of plastic. That's <em>39,443</em> 1-liter water bottles.... 
-                            <button type="button" class="learn" id="fill_it" onclick="crushIt()">Fill It!</button>
+                           
                         </td>
                     </tr>
                 </table>
