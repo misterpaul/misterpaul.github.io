@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 
   <script>
-    let version = 46
+    let version = 47
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart
 
@@ -41,16 +41,14 @@
             // boot has not yet touched the bottle
             bottleSize = bottle.height
             bottleDistance = 0
-        } else if (bootDistance + boot.offsetTop + boot.height >= bottle.bottom - bottle.minSize ) {
-            // stop crunching
-            bottleSize = bottle.minSize
-            bottleDistance = bootDistance - bottle.minSize
-            // hide the boot
-            boot.style.visibility="hidden"
         } else {
             // we're in the midst of crunching
             bottleSize = bottle.bottom - boot.bottom
             bottleDistance = bootDistance/2
+        }
+        if (bottleSize <= bottle.minSize) {
+            // we're done crunching
+            boot.style.visibility='hidden'
         }
         bottleScale = bottleSize/bottle.height
         console.log( "size: " + bottleSize + ", bottleDistance: " + bottleDistance + ",scale: " +  bottleSize/bottle.height + ", bottle.bottom: " + bottle.bottom +", boot.bottom: " + boot.bottom + ", diff: " + (bottle.bottom - boot.bottom) + ", bottle.height: " + bottle.height + ", bottle.minSize: " + bottle.minSize)           
