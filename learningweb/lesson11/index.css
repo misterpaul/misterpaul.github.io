@@ -44,13 +44,11 @@
 }
 
 .boot-bottle-box {
-    align: bottom;
+ /*   align: bottom; */
     vertical-align: middle;
-    width: 200px;
 }
 
 .dumpster-box {
-    align: bottom;
+ /*   align: bottom; */
     vertical-align: middle;
-    width: 1024px;
 }
