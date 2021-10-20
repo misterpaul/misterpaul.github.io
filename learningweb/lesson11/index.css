@@ -46,9 +46,16 @@
  /*   align: bottom; */
     vertical-align: middle;
     font-size: medium;
+    max-width: 2vw;
 }
 
-.dumpster-box {
+.annual-production {
  /*   align: bottom; */
-    vertical-align: middle;
+    vertical-align: top;
+    width: 100000px;
+    height: 240 px
+}
+
+.learn {
+    font-size: larger;
 }
