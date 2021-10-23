@@ -51,6 +51,7 @@
 
 .annual-production {
  /*   align: bottom; */
+    background-color: darkcyan;
     vertical-align: top;
     width: 100000px;
     height: 240 px
