@@ -45,7 +45,8 @@
 .boot-bottle-box {
  /*   align: bottom; */
     vertical-align: middle;
-    font-size: medium;
+    font-weight: normal;
+    line-height: 1.4;
     max-width: 25vw;
 }
 
