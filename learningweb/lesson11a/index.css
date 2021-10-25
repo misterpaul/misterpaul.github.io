@@ -63,10 +63,10 @@ body {
       /* float: left; */
        font-size: larger;
    }
-.annual-production {
+.metric-ton {
  /*   align: bottom; */
     background-color: darkcyan;
     vertical-align: top;
-    width: 300000px;
-    height: 800px;
+    width: 60000px;
+    height: 400px;
 }
