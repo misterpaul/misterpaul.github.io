@@ -51,9 +51,15 @@ body {
 .boot-bottle-box {
  /*   align: bottom; */
     vertical-align: middle;
-    font-weight: normal;
+    float: left;
 }
 
+.boot-bottle-intro {
+    /*   align: bottom; */
+       vertical-align: middle;
+       float: left;
+       font-size: larger;
+   }
 .annual-production {
  /*   align: bottom; */
     background-color: darkcyan;
