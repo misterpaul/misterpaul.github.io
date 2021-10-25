@@ -53,6 +53,10 @@ body {
     /*float: left;*/
 }
 
+.learn {
+    font-size: 20;
+}
+
 .boot-bottle-intro {
     /*   align: bottom; */
        vertical-align: middle;
@@ -63,6 +67,6 @@ body {
  /*   align: bottom; */
     background-color: darkcyan;
     vertical-align: top;
-    width: 10000px;
-    height: 2400px;
+    width: 300000px;
+    height: 800px;
 }
