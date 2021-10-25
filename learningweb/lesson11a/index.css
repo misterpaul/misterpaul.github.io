@@ -50,13 +50,13 @@ body {
 .boot-bottle-box {
  /*   align: bottom; */
     vertical-align: middle;
-    float: left;
+    /*float: left;*/
 }
 
 .boot-bottle-intro {
     /*   align: bottom; */
        vertical-align: middle;
-       float: left;
+      /* float: left; */
        font-size: larger;
    }
 .annual-production {
