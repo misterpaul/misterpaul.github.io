@@ -74,5 +74,14 @@ body {
     width: 60000px;
     height: 400px;
     font-size: larger;
+}
 
+.top-label {
+    vertical-align: top;
+    padding: 10px;
+}
+
+.bottom-label {
+    vertical-align: bottom;
+    padding: 10px;
 }
