@@ -50,17 +50,21 @@ body {
 .boot-bottle-box {
  /*   align: bottom; */
     vertical-align: middle;
-    /*float: left;*/
+    float: left;
 }
 
 .learn {
     font-size: larger;
+    margin: 0;
+    position: absolute;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .boot-bottle-intro {
     /*   align: bottom; */
        vertical-align: middle;
-      /* float: left; */
+       float: left; 
        font-size: larger;
    }
 .metric-ton {
