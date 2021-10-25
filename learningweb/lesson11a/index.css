@@ -54,7 +54,7 @@ body {
 }
 
 .learn {
-    font-size: 20;
+    font-size: larger;
 }
 
 .boot-bottle-intro {
@@ -69,4 +69,6 @@ body {
     vertical-align: top;
     width: 60000px;
     height: 400px;
+    font-size: larger;
+
 }
