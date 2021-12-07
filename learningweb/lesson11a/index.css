@@ -3,40 +3,9 @@ body {
 
 }
 
-.outer-box {
-    background-color: black;
-    margin: 10px;
-    padding: 20px;
-}
-
-.inner-box {
-    background-color: yellow;
-    border-width: 20px;
-    border-color: aqua;
-    margin: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-
-.lesson {
-    background-color: lightskyblue;
-    margin: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-
 .water-bottle {
     padding: 0px;
     width: 180px;
-    height: 180px; 
-}
-
-.narrow-bottle {
-    padding: 0px;
     height: 180px; 
 }
 
@@ -63,7 +32,7 @@ body {
 
 .boot-bottle-intro {
     /*   align: bottom; */
-       vertical-align: bottom;
+       vertical-align: text-bottom;
        float: left; 
        font-size: larger;
    }
