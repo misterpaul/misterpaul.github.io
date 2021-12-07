@@ -49,7 +49,6 @@ body {
 .metric-ton {
  /*   align: bottom; */
     background-color: green;
-    vertical-align: top;
     width: 40000px;
     height: 600px;
     font-size: larger;
@@ -57,9 +56,7 @@ body {
 }
 
 .million-metric-ton {
-    /*   align: bottom; */
     background-color: blueviolet;
-    vertical-align: top;
     /*width: 6000000000px;*/
     width: 400000;
     height: 1600px;
@@ -70,10 +67,12 @@ body {
 .top-label {
     vertical-align: top;
     padding: 10px;
+    background-color: yellow;
 }
 
 .bottom-label {
     vertical-align: text-bottom;
     padding: 10px;
     align-self: flex-end;
+    background-color:tomato;
 }
