@@ -63,7 +63,7 @@ body {
 
 .boot-bottle-intro {
     /*   align: bottom; */
-       vertical-align: middle;
+       vertical-align: bottom;
        float: left; 
        font-size: larger;
    }
