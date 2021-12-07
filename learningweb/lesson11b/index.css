@@ -51,8 +51,8 @@ body {
  /*   align: bottom; */
     background-color: green;
     vertical-align: top;
-    width: 60000px;
-    height: 400px;
+    width: 40000px;
+    height: 600px;
     font-size: larger;
     padding: 10px;
 }
@@ -61,7 +61,7 @@ body {
     /*   align: bottom; */
     background-color: blueviolet;
     vertical-align: top;
-    width: 12000000000px;
+    /*width: 12000000000px;*/
     height: 800px;
     font-size: larger;
     padding: 10px;

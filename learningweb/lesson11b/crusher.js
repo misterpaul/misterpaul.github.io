@@ -3,7 +3,7 @@ function crusherInit () {
     boot                  = document.getElementById('boot')
     bottle                = document.getElementById('water-bottle')
     boot.style.visibility = 'hidden'
-    bottle.minSize        = 4  // min bottleSize of bottle when crushed
+    bottle.minSize        = 2  // min bottleSize of bottle when crushed
 
     bottle.bottom = bottle.offsetTop + bottle.height
     boot.bottom = boot.offsetTop + boot.height
