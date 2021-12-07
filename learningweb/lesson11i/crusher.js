@@ -63,5 +63,5 @@ function crushIt () {
     alert("Perhaps we should crush the bottle first...")
     window.requestAnimationFrame ( moveBootAnimation )
     metricTon.style.backgroundColor = "green"
-    millionMetricTon.style.backgroundColor = "violet"
+    millionMetricTon.style.backgroundColor = "purple"
 }
