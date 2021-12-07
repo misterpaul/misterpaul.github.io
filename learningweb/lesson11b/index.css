@@ -22,10 +22,10 @@ body {
     padding: 5px;
     background-color: white;
     height: 370px;
+    vertical-align: bottom;
 }
 
 .boot-bottle-box {
-    align: bottom; 
     vertical-align: middle;
     float: left;
     /*background-color: thistle;*/
