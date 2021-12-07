@@ -60,7 +60,8 @@ body {
     /*   align: bottom; */
     background-color: blueviolet;
     vertical-align: top;
-    width: 6000000000px;
+    /*width: 6000000000px;*/
+    width: 400000;
     height: 1600px;
     font-size: larger;
     padding: 10px;
