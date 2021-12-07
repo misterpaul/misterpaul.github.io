@@ -1,7 +1,7 @@
 function crusherInit () {
     // globals. maybe modify the page objects instead, or make these local and pass them as args
     boot                  = document.getElementById('boot')
-    bottle                = document.getElementById('water-bottle')
+    bottle                = document.getElementById('waterBottle')
     boot.style.visibility = 'hidden'
     bottle.minSize        = 2  // min bottleSize of bottle when crushed
 

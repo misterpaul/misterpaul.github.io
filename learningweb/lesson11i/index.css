@@ -4,7 +4,7 @@ body {
     flex-direction: column;
 }
 
-.water-bottle {
+.waterBottle {
     padding: 0px;
     width: 180px;
     height: 180px; 
@@ -46,7 +46,7 @@ body {
     transform: translateY(-50%);*/
 }
 
-.metric-ton {
+.metricTon {
     background-color: transparent;
     width: 40000px;
     height: 600px;
@@ -54,7 +54,7 @@ body {
     padding: 10px;
 }
 
-.million-metric-ton {
+.millionMetricTon {
     background-color: transparent;
     /*width: 6000000000px;*/
     width: 400000px; /* nowhere even close */
