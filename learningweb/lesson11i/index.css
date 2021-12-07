@@ -46,8 +46,8 @@ body {
     transform: translateY(-50%);*/
 }
 
-.metric-ton {
- /*   align: bottom; */
+.metricTon {
+    visibility: 'hidden';
     background-color: green;
     width: 40000px;
     height: 600px;
@@ -55,7 +55,8 @@ body {
     padding: 10px;
 }
 
-.million-metric-ton {
+.millionMetricTon {
+    visibility: 'hidden';
     background-color: blueviolet;
     /*width: 6000000000px;*/
     width: 400000px; /* nowhere even close */

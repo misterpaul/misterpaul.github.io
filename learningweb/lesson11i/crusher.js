@@ -3,6 +3,8 @@ function crusherInit () {
     boot                  = document.getElementById('boot')
     bottle                = document.getElementById('water-bottle')
     boot.style.visibility = 'hidden'
+    metricTon.style.visibility="hidden"
+    millionMetricTon.style.visibility="hidden"
     bottle.minSize        = 2  // min bottleSize of bottle when crushed
 
     bottle.bottom = bottle.offsetTop + bottle.height
@@ -59,4 +61,7 @@ function crushIt () {
 
     alert("Perhaps we should crush the bottle first...")
     window.requestAnimationFrame ( moveBootAnimation )
+    metricTon.style.visibility="visible"
+    millionMetricTon.style.visibility="visible"
+
 }
