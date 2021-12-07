@@ -17,6 +17,7 @@ body {
 }
 
 .bottles-in-a-ton {
+    display: flex;
     padding: 5px;
     background-color: white;
     height: 370px;
