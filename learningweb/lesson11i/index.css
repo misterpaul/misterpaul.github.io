@@ -47,8 +47,7 @@ body {
 }
 
 .metric-ton {
-    visibility: hidden;
-    background-color: green;
+    background-color: transparent;
     width: 40000px;
     height: 600px;
     font-size: larger;
@@ -56,7 +55,7 @@ body {
 }
 
 .million-metric-ton {
-    background-color: blueviolet;
+    background-color: transparent;
     /*width: 6000000000px;*/
     width: 400000px; /* nowhere even close */
     height: 1600px;
@@ -72,6 +71,7 @@ body {
 }
 
 .bottom-label {
+    visibility: hidden;
     padding: 10px;
     align-self: flex-end;
     background-color:tomato;
