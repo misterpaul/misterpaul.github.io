@@ -1,7 +1,7 @@
 body {
     font-size: 20px;
-    display: flex;
-    min-width: 400px;
+    /*display: flex;
+    min-width: 400px;*/
   
 }
 
@@ -21,6 +21,7 @@ body {
 .bottles-in-a-ton {
     padding: 5px;
     background-color: white;
+    height: 370px;
 }
 
 .boot-bottle-box {
@@ -35,6 +36,7 @@ body {
     vertical-align: text-bottom;
     /*font-size: larger;*/
     background-color: turquoise;
+    padding: 5px;
 }
 
 .learn {
