@@ -47,7 +47,7 @@ body {
 }
 
 .metric-ton {
-    visibility: 'hidden';
+    visibility: hidden;
     background-color: green;
     width: 40000px;
     height: 600px;
@@ -65,6 +65,7 @@ body {
 }
 
 .top-label {
+    visibility: hidden;
     padding: 10px;
     background-color: yellow;
     width: 200vw;
