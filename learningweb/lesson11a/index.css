@@ -20,12 +20,21 @@ body {
 
 .bottles-in-a-ton {
     padding: 5px;
+    background-color: white;
 }
 
 .boot-bottle-box {
  /*   align: bottom; */
     vertical-align: middle;
     float: left;
+    background-color: thistle;
+}
+
+.boot-bottle-intro {
+/*   align: bottom; */
+    vertical-align: text-bottom;
+    font-size: larger;
+    background-color: turquoise;
 }
 
 .learn {
@@ -35,12 +44,6 @@ body {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-
-.boot-bottle-intro {
-    /*   align: bottom; */
-       vertical-align: text-bottom;
-       font-size: larger;
-   }
 
 .metric-ton {
  /*   align: bottom; */
