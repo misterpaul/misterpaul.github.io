@@ -53,6 +53,9 @@ function moveBootAnimation ( timestamp ) {
 
     if (elapsed <= crushTime) {
         window.requestAnimationFrame ( moveBootAnimation )
+    } else {
+        metricTon.style.backgroundColor = "green"
+        millionMetricTon.style.backgroundColor = "purple"    
     }
 }
 
@@ -62,6 +65,4 @@ function crushIt () {
 
     alert("Perhaps we should crush the bottle first...")
     window.requestAnimationFrame ( moveBootAnimation )
-    metricTon.style.backgroundColor = "green"
-    millionMetricTon.style.backgroundColor = "purple"
 }
