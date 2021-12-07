@@ -33,7 +33,7 @@ body {
 .boot-bottle-intro {
 /*   align: bottom; */
     vertical-align: text-bottom;
-    font-size: larger;
+    /*font-size: larger;*/
     background-color: turquoise;
 }
 
