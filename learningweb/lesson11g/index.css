@@ -43,8 +43,8 @@ body {
 .learn {
     font-size: larger;
     margin: 0;
-    position: absolute;
-    /*-ms-transform: translateY(-50%);
+    /*position: absolute;
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);*/
 }
 
