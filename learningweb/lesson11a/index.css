@@ -49,16 +49,18 @@ body {
     width: 60000px;
     height: 400px;
     font-size: larger;
+    padding: 10px;
 }
 
 .million-metric-ton {
     /*   align: bottom; */
-       background-color: blueviolet;
-       vertical-align: top;
-       width: 12000000000px;
-       height: 800px;
-       font-size: larger;
-   }
+    background-color: blueviolet;
+    vertical-align: top;
+    width: 12000000000px;
+    height: 800px;
+    font-size: larger;
+    padding: 10px;
+}
 
 .top-label {
     vertical-align: top;
