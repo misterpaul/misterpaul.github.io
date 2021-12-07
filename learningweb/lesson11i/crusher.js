@@ -25,7 +25,7 @@ function moveBoot ( t ) {
     let bootDistance = Math.min(boot.verticalMoveRate * t, boot.verticalDistance)
     boot.style.transform = 'translateY(' + bootDistance + 'px)'
     boot.bottom = boot.offsetTop + bootDistance + boot.height
-    console.log( "bootDistance: " + bootDistance + ", boot.top: " + boot.offsetTop + ", boot.bottom:" + boot.bottom)
+    //console.log( "bootDistance: " + bootDistance + ", boot.top: " + boot.offsetTop + ", boot.bottom:" + boot.bottom)
 
     if (bootDistance + boot.offsetTop + boot.height <= bottle.offsetTop) {
         // boot has not yet touched the bottle
