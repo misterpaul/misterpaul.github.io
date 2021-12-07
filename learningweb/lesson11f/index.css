@@ -1,8 +1,6 @@
 body {
     font-size: 20px;
-    /*display: flex;
-    min-width: 400px;*/
-  
+    display: flex;  
 }
 
 .water-bottle {
@@ -23,7 +21,7 @@ body {
     background-color: white;
     height: 370px;
     width: 100vw;
-    vertical-align: bottom;
+    align-items: flex-end;
 }
 
 .boot-bottle-box {
@@ -77,4 +75,5 @@ body {
 .bottom-label {
     vertical-align: text-bottom;
     padding: 10px;
+    align-self: flex-end;
 }
