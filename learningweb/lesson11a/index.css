@@ -39,7 +39,6 @@ body {
 .boot-bottle-intro {
     /*   align: bottom; */
        vertical-align: text-bottom;
-       float: left; 
        font-size: larger;
    }
 
@@ -67,6 +66,6 @@ body {
 }
 
 .bottom-label {
-    vertical-align: bottom;
+    vertical-align: text-bottom;
     padding: 10px;
 }
