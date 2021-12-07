@@ -16,6 +16,10 @@ body {
     visibility: 'hidden';
 }
 
+.bottles-in-a-ton {
+    background-color: lightgray;
+}
+
 .boot-bottle-box {
  /*   align: bottom; */
     vertical-align: middle;
@@ -36,6 +40,7 @@ body {
        float: left; 
        font-size: larger;
    }
+
 .metric-ton {
  /*   align: bottom; */
     background-color: green;
