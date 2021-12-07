@@ -58,21 +58,21 @@ body {
 .million-metric-ton {
     background-color: blueviolet;
     /*width: 6000000000px;*/
-    width: 400000px;
+    width: 400000px; /* nowhere even close */
     height: 1600px;
     font-size: larger;
     padding: 10px;
 }
 
 .top-label {
-    vertical-align: top;
     padding: 10px;
     background-color: yellow;
+    width: 200vw;
 }
 
 .bottom-label {
-    vertical-align: text-bottom;
     padding: 10px;
     align-self: flex-end;
     background-color:tomato;
+    width: 200vw;
 }
