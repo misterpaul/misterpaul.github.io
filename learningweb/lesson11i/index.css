@@ -34,7 +34,7 @@ body {
 .boot-bottle-intro {
 /*   align: bottom; */
     /*font-size: larger;*/
-    background-color: blue;
+    background-color: turquoise;
     padding: 5px;
 }
 
@@ -47,7 +47,6 @@ body {
 }
 
 .metricTon {
-    background-color: transparent;
     width: 40000px;
     height: 600px;
     font-size: larger;
@@ -55,7 +54,6 @@ body {
 }
 
 .millionMetricTon {
-    background-color: transparent;
     /*width: 6000000000px;*/
     width: 400000px; /* nowhere even close */
     height: 1600px;
@@ -76,4 +74,16 @@ body {
     align-self: flex-end;
     background-color:tomato;
     width: 200vw;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.tonColor {
+    background-color: green;
+}
+
+.millionTonColor {
+    background-color: violet;
 }

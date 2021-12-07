@@ -4,6 +4,7 @@ function crusherInit () {
     bottle                = document.getElementById('waterBottle')
     metricTon             = document.getElementById('metricTon')
     millionMetricTon      = document.getElementById('millionMetricTon')
+    showAtEnd             = ['metricTon', 'millionMetricTon', ]
     boot.style.visibility = 'hidden'
     bottle.minSize        = 2  // min bottleSize of bottle when crushed
 
@@ -61,6 +62,6 @@ function crushIt () {
 
     alert("Perhaps we should crush the bottle first...")
     window.requestAnimationFrame ( moveBootAnimation )
-    metricTon.style.backgroundColor="green"
-    millionMetricTon.style.backgroundColor="purple"
+    metricTon.className='tonColor'
+    millionMetricTon.className='millionTonColor'
 }
