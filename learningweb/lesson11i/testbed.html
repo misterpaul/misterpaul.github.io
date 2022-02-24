@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Plastics</title>
+  <title>Testing</title>
   <link rel="stylesheet" type="text/css" href="index.css">
   <script>
-    let version = 16
     let crushTime = 4000 // time to completely crush bottle (milliseconds)
     let crushStart = -1
   </script>      
-  <script type="text/javascript" src="crusher.js"></script>
+  <script type="text/javascript" src="test.js"></script>
 </head>
 <body onload="crusherInit()"> 
     <div class="millionMetricTon transparent" id='millionMetricTon'>
@@ -24,21 +23,16 @@
                     <p>In 2016, the world produced about 
                         <a href="https://www.frontiersin.org/articles/10.3389/fmars.2019.00627/full">330 million metric tons</a> of plastic. (2020 is estimated to be 
                         <a href="https://www.statista.com/statistics/282732/global-production-of-plastics-since-1950/">367 million metric tons.</a>) How much is that?</p>
-                    <p><button type="button" class="learn" id="fill_it" onclick="crushIt()">Lets Find Out!</button></p>
+                    <p><button type="button" class="learn" id="fill_it" onclick="runTest()">Lets Find Out!</button></p>
                 </div>
             </div>
-            <p class="top-label hiddenText">The green box represents a metric ton of crushed water bottles. 
-                It is a stack <span class="metricTonStackHeight"></span> bottles high x <span class="metricTonStackWidth"></span> bottles wide. </p>
-            <p class="bottom-label hiddenText">The math: A metric ton is 1000 kg (1,000,000 g, or 100,000 10-gram water bottles). 
-                Our 10 gram bottle is crushed to <span class="crushedBottleHeight"></span> pixels high x <span class="crushedBottleWidth"></span> pixels wide, 
-                so this box is <span class="metricTonHeight"></span> pixels high x <span class="metricTonWidth"></span> pixels wide  </p>
-
+            <p class="top-label test" id=tonTopText>The green box is a metric ton of crushed water bottles. It is a stack 100 bottles high x 1,000 bottles wide. </p>
+            <p class="bottom-label test" id=tonBottomText>The math: A metric ton is 1000 kg, or 1,000,000 g, or 100,000 10-gram water bottles. Our 10 gram bottle is crushed to 2 pixels high x 60 pixels wide, 
+                so this box is 600 pixels high x 20,000 pixels wide  </p>
         </div>
-        <p class="top-label hiddenText">The purple box is a million metric tons of crushed water bottles. 
-            It is a stack <span class="millionMetricTonStackHeight"></span> bottles high x <span class="milionMetricTonStackWidth"></span> bottles wide. </p>
-        <p class="bottom-label hiddenText">The math: A metric ton is 1000 kg, (1,000,000 g, or 100,000 10-gram water bottles).
-            Our 10 gram bottle is crushed to <span class="crushedBottleHeight"></span> pixels high x <span class="crushedBottleWidth"></span> pixels wide, 
-            so this box is <span class="millionMetricTonHeight"></span> pixels high x <span class="millionMetricTonWidth"></span> pixels wide  </p>
+        <p class="top-label test" id=millionTonTopText>The purple box is a million metric tons of crushed water bottles. It is a stack 500 bottles high x 200,000,000 bottles wide. </p>
+        <p class="bottom-label test" id=millionTonBottomText>The math: A metric ton is 1000 kg, or 1,000,000 g, or 100,000 10-gram water bottles. Our 10 gram bottle is crushed to 2 pixels high x 60 pixels wide, 
+            so this box is 800 pixels high x 2,000,000,000 pixels wide  </p>
     </div>                
 </body>
 </html>

@@ -1,5 +1,5 @@
 body {
-    font-size: 20px;
+    font-size: larger;
     display: flex;  
     flex-direction: column;
 }
@@ -20,6 +20,7 @@ body {
 .bottles-in-a-ton {
     padding: 5px;
     background-color: white;
+    color: black;
     height: 370px;
     width: 100vw;
     align-items: flex-end;
@@ -34,7 +35,7 @@ body {
 .boot-bottle-intro {
 /*   align: bottom; */
     /*font-size: larger;*/
-    background-color: turquoise;
+    /*background-color: turquoise;*/
     padding: 5px;
 }
 
@@ -47,43 +48,45 @@ body {
 }
 
 .metricTon {
-    width: 40000px;
-    height: 600px;
-    font-size: larger;
+    width: 100px;
+    height: 20px;
+/*    font-size: larger; */
+    color: lightyellow;
     padding: 10px;
 }
 
 .millionMetricTon {
-    /*width: 6000000000px;*/
-    width: 400000px; /* nowhere even close */
-    height: 1600px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
     padding: 10px;
+    color: yellow;
 }
 
 .top-label {
-    visibility: hidden;
+    font-size: larger;
     padding: 10px;
-    background-color: yellow;
+    /*background-color: yellow;*/
     width: 200vw;
 }
 
 .bottom-label {
-    visibility: hidden;
+    font-size: larger;
     padding: 10px;
     align-self: flex-end;
-    background-color:tomato;
+    /*background-color:tomato;*/
     width: 200vw;
 }
 
-.transparent {
-    background-color: transparent;
+.hiddenText {
+    visibility: hidden;
 }
+
 
 .tonColor {
     background-color: green;
 }
 
 .millionTonColor {
-    background-color: violet;
+    background-color: purple;
 }
+
