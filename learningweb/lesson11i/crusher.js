@@ -58,8 +58,6 @@ function moveBootAnimation ( timestamp ) {
     if (elapsed <= crushTime) {
         window.requestAnimationFrame ( moveBootAnimation )
     } else {
-        metricTon.style.backgroundColor = "green"
-        millionMetricTon.style.backgroundColor = "purple" 
         revealBlocks()   
     }
 }
@@ -77,7 +75,7 @@ function revealBlocks () {
     for (var i = 0; i < elements.length; i++) {
         elements.item(i).style.visibility = "visible"
     }
-    fillCalculatedValues ()
+   /* fillCalculatedValues ()*/
     drawline ('#ton-canvas')
 }
 
