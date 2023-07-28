@@ -12,7 +12,7 @@
   </head>
 
   <body onload="crusherInit()">
-    <div class="instruction">
+    <div class="instruction container">
       <div class="instruction-img">
         <img
           src="../images/boot-svgrepo-com.svg"
@@ -49,43 +49,49 @@
       Lets Find Out!
     </button>
 
-    <div class="millionMetricTon transparent" id="millionMetricTon">
-      <div class="metricTon transparent" id="metricTon">
-        <div class="comparison-bars">
-          <div class="green-bar hiddenText">
-            <p class="top-label hiddenText">
-              The green box represents a metric ton of crushed water bottles. It
-              is a stack <span class="metricTonStackHeight"></span> bottles high
-              x <span class="metricTonStackWidth"></span> bottles wide.
-            </p>
-            <p class="bottom-label hiddenText">
-              The math: A metric ton is 1000 kg (1,000,000 g, or 100,000 10-gram
-              water bottles). Our 10 gram bottle is crushed to
-              <span class="crushedBottleHeight"></span> pixels high x
-              <span class="crushedBottleWidth"></span> pixels wide, so this box
-              is <span class="metricTonHeight"></span> pixels high x
-              <span class="metricTonWidth"></span> pixels wide
-            </p>
-          </div>
-
-          <div class="purple-bar hiddenText">
-            <p class="top-label hiddenText">
-              The purple box is a million metric tons of crushed water bottles.
-              It is a stack
-              <span class="millionMetricTonStackHeight"></span> bottles high x
-              <span class="milionMetricTonStackWidth"></span> bottles wide.
-            </p>
-            <p class="bottom-label hiddenText">
-              The math: A metric ton is 1000 kg, (1,000,000 g, or 100,000
-              10-gram water bottles). Our 10 gram bottle is crushed to
-              <span class="crushedBottleHeight"></span> pixels high x
-              <span class="crushedBottleWidth"></span> pixels wide, so this box
-              is <span class="millionMetricTonHeight"></span> pixels high x
-              <span class="millionMetricTonWidth"></span> pixels wide
-            </p>
-          </div>
+    <!-- <div class="millionMetricTon transparent" id="millionMetricTon">
+      <div class="metricTon transparent" id="metricTon">-->
+    <div class="comparison-bars">
+      <div class="green-bar-area hiddenText">
+        <div class="green-bar">
+        
+        </div>
+        <div class="green-bar-text container2">
+         
+          <p>
+            This green box represents a metric ton of crushed water bottles. It
+            is a stack x bottles high and x bottles wide
+          </p>
+          <p>
+            The math: A metric ton is 1000 kg (1,000,000 g, or 100,000
+            10-gram water bottles). Our 10 gram bottle is crushed topixels
+            high x pixels wide, so this box is x pixels high by x pixels
+            wide.
+          </p>
+        
         </div>
       </div>
+
+    
+
+      <div class="purple-bar hiddenText">
+        <p class="top-label hiddenText container2">
+          The purple box is a million metric tons of crushed water bottles. It
+          is a stack
+          <span class="millionMetricTonStackHeight"></span> bottles high x
+          <span class="milionMetricTonStackWidth"></span> bottles wide.
+        </p>
+        <p class="bottom-label hiddenText container2">
+          The math: A metric ton is 1000 kg, (1,000,000 g, or 100,000 10-gram
+          water bottles). Our 10 gram bottle is crushed to
+          <span class="crushedBottleHeight"></span> pixels high x
+          <span class="crushedBottleWidth"></span> pixels wide, so this box is
+          <span class="millionMetricTonHeight"></span> pixels high x
+          <span class="millionMetricTonWidth"></span> pixels wide
+        </p>
+      </div>
     </div>
+    <!--</div>
+    </div>-->
   </body>
 </html>

@@ -9,7 +9,6 @@ html {
 html,
 body {
   box-sizing: border-box;
-  max-width: 800px;
   margin: 0 auto;
   
 }
@@ -20,6 +19,15 @@ body {
   flex-direction:column;
   flex-wrap:wrap;
 }
+.container{
+  max-width:800px;
+
+}
+.container2{
+  max-width:600px;
+
+}
+
 
 .waterBottle {
   padding: 0px;
@@ -53,6 +61,7 @@ body {
     display:flex;
     justify-content:center;
     align-items:center;
+    margin: 0 auto;
 }
 
 .boot-bottle-intro {
@@ -71,24 +80,46 @@ body {
 }
 .comparison-bars {
   display: flex;
+  /*NEW*/
+  flex-direction:column;
+  /*-------*/
   justify-content: space-around;
   align-items: flex-start;
   width: 800px;
   margin: 0 auto;
 }
-.green-bar {
-  display: flex;
-  flex-direction: row;
+.green-bar-area{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
   flex-wrap:wrap;
-  height: 100px;
-  background-color: green;
-  width: 300px;
+  border:4px solid fuchsia;
+  height:300px;
+width:200vw;
+}
+.green-bar {
+  /*height: 100px;
+  width: 300px;*/
+  height:300px;
+  width:100px;
+  background-color:green;
+  border:2px solid black;
+}
+.green-bar-text{
+  border:2px solid blue;
+  color:black;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  height:275px;
 }
 .purple-bar {
   display: flex;
-  flex-direction: column;
-  height: 10000px;
-  width: 300px;
+  flex-direction: row /*column*/;
+  /*height: 10000px;
+  width: 300px;*/
+  width:10000px;
+  height:300px;
   background-color: purple;
 }
 
